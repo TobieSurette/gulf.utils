@@ -2,8 +2,8 @@ Package: gulf.utils
 Type: Package
 Title: Southern Gulf Utility Functions
 Version: 0.1.0
-Author: Tobie Surette
-Maintainer: Tobie Surette <tobie.surette@gmail.comt>
+Authors@R: as.person(c(
+  "Tobie Surette <Tobie.Surette@dfo-mpo.gc.ca> [aut, cre]")
 Description: Basic utility functions for use in the Southern Gulf of Saint Lawrence
 License: GPL
 Encoding: UTF-8
