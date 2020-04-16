@@ -1,6 +1,6 @@
 #' Matrix Format Conversion
 #'
-#' These are functions to convert between different matrix formats. Generally, we may convert a two-dimensional
+#' @description These are functions to convert between different matrix formats. Generally, we may convert a two-dimensional
 #' array of values to a linear xyz format which contains the coordinates or indices of the rows and columns
 #' corresponding to each matrix element \code{z}.
 #'
@@ -12,12 +12,38 @@
 #'          \code{x}, \code{y} and \code{z}.
 #' @param y Vector containing the matrix column indices. Must be the same length as \code{x}.
 #' @param z Vector containing the matrix elements which are mapped by \code{x} and \code{y}.
-#'          Must be the same length as \code{x} and \code{y}.}
+#'          Must be the same length as \code{x} and \code{y}.
 #' @param na.rm Logical value specifying whether to remove \code{NA} values in \code{z} the output.
 #'              The default is \code{FALSE}.
 #' @param fun Function (e.g. \code{\link[base]{mean}}) to be used on \code{z} when the indices \code{x}
 #'            and \code{y} have duplicate entries.
 #'
+#' @return Matrix
+#'
+#' @examples
+#' # Define  random matrix:
+#' m <- round(matrix(runif(40), nrow = 8), 2)
+#'
+#' # Convert to XYZ format:
+#' v <- matrix2xyz(m)
+#'
+#' # Convert back to matrix format:
+#' xyz2matrix(x = v[,"x"], y = v[,"y"], z = v[,"z"])
+#'
+#' # Equivalently:
+#' xyz2matrix(v)
+#'
+#' # Convert XYZ elements with duplicate entries to matrix:
+#' x <- c(1, 1, 3, 2, 3)
+#' y <- c(2, 2, 1, 2, 3)
+#' z <- 1:5
+#' m <- xyz2matrix(x, y, z, mean)
+#'
+#' # Convert back to XYZ format:
+#' v <- matrix2xyz(m, na.rm = TRUE)
+#'
+#' @export matrix2xyz
+#' @export xyz2matrix
 
 #' @describeIn matrix2xyz Convert from matrix to xyz format.
 matrix2xyz <- function(m, na.rm = FALSE){
@@ -49,7 +75,7 @@ matrix2xyz <- function(m, na.rm = FALSE){
    return(v)
 }
 
-#' @describeIn xyz2matrix Convert from xyz to matrix format.
+#' @describeIn matrix2xyz Convert from xyz to matrix format.
 xyz2matrix <- function(x, y, z, fun){
    # Parse 'x' argument:
    if (!is.null(dim(x))){
@@ -100,31 +126,5 @@ xyz2matrix <- function(x, y, z, fun){
    return(zz)
 }
 
-#'
-#' @return Matrix
-#'
-#' @examples
-#' # Define  random matrix:
-#' m <- round(matrix(runif(40), nrow = 8), 2)
 
-#' # Convert to XYZ format:
-#' v <- matrix2xyz(m)
-
-#' # Convert back to matrix format:
-#' xyz2matrix(x = v[,"x"], y = v[,"y"], z = v[,"z"])
-
-#' # Equivalently:
-#' xyz2matrix(v)
-
-#' # Convert XYZ elements with duplicate entries to matrix:
-#' x <- c(1, 1, 3, 2, 3)
-#' y <- c(2, 2, 1, 2, 3)
-#' z <- 1:5
-#' m <- xyz2matrix(x, y, z, mean)
-
-#' # Convert back to XYZ format:
-#' v <- matrix2xyz(m, na.rm = TRUE)
-#'
-#' @export matrix2xyz
-#' @export xyz2matrix
 

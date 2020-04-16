@@ -5,9 +5,10 @@
 #' The total number of missing and NA values are also shown when the occur.
 #'
 #' @param x Data frame.
+#' @param index Number of indent spaces (default = 3).
+#' @param ... Other arguments (not used).
 #'
 #' @examples
-#'
 #' # Create data frame
 #' x <- data.frame(categories = LETTERS[1:5],
 #'                 n = rpois(5),
@@ -23,7 +24,6 @@
 #'                 missing = NA)
 #'
 #' describe(x)
-#'
 #' @export describe
 #' @export describe.data.frame
 #'
@@ -68,7 +68,7 @@ sumstr <- function(x, digits = 3, max = 10){
    return(v)
 }
 
-describe.data.frame <- function(x, indent = 3){
+describe.data.frame <- function(x, indent = 3, ...){
    cat("\n")
    cat(paste(paste(dim(x), collapse = " x "), "data frame:\n"))
    fields <- names(x)

@@ -1,6 +1,6 @@
 #' Export data frame to Excel
 #'
-#' This function dumps a data frame into a temporary tab-delimited table and opens an Excel session for the file.
+#' @description This function dumps a data frame into a temporary tab-delimited table and opens an Excel session for the file.
 #'
 #' @aliases excel excel.default excel.data.frame
 #'
@@ -19,14 +19,12 @@
 #' excel(x, header = FALSE)
 #'
 #' @export excel
-#' @export excel.default
-#' @export excel.data.frame
-#'
-
 excel <- function(x, ...) UseMethod("excel")
 
+#' @describeIn excel Default key method.
 excel.default <- function(x, ...) return(excel(as.data.frame(x), ...))
 
+#' @describeIn excel Export data frame.
 excel.data.frame <- function(x, header = TRUE, row.names = FALSE, ...){
    # EXCEL.DATA.FRAME - Send data frame to an Excel spreadsheet.
 

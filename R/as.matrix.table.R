@@ -7,7 +7,6 @@
 #' @return Logical value(s).
 #'
 #' @examples
-#'
 #' # Vector:
 #' x <- table(rpois(100, 5))
 #'   as.matrix(x)

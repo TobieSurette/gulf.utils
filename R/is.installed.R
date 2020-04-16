@@ -1,6 +1,6 @@
 #' Check Package Installation
 #'
-#' This function checks whether R package are installed.
+#' This function checks whether an R package(s) is installed.
 #'
 #' @param package.name Name(s) of the packages to be checked.
 #' @return Logical value(s).
@@ -12,4 +12,4 @@
 #'
 #' @export is.installed
 #'
-is.installed <- function(package.name) is.element(package, installed.packages()[,1])
+is.installed <- function(package.name) is.element(package.name, installed.packages()[,1])

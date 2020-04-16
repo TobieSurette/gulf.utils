@@ -1,5 +1,7 @@
 #' Calculate elapsed time
 #'
+#' @description Calculates elapsed time between calls to \code{tic} and \code{toc}.
+#'
 #' @aliases tic toc
 #' @param gcFirst Logical value.
 #'
@@ -10,8 +12,8 @@
 #'
 #' @export tic
 #' @export toc
-#'
 
+#' @describeIn tic Start timer.
 tic <- function(gcFirst = TRUE){
    assign(".type", "elapsed", envir = baseenv())
    if (gcFirst) gc(FALSE)
@@ -20,6 +22,7 @@ tic <- function(gcFirst = TRUE){
    invisible(tic)
 }
 
+#' @describeIn tic Stop timer and report elapsed time.
 toc <- function(){
    type <- get(".type", envir = baseenv())
    toc <- proc.time()[type]
