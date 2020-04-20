@@ -1,6 +1,6 @@
 #' Check Package Installation
 #'
-#' This function checks whether an R package(s) is installed.
+#' @description This function checks whether an R package(s) is installed.
 #'
 #' @param package.name Name(s) of the packages to be checked.
 #' @return Logical value(s).

@@ -1,6 +1,6 @@
 #' Date Extraction and Conversion
 #'
-#' @description These are convenience functions to extract a date field from an object, such as a character
+#' @description These are wrapper functions to extract a date field from an object, such as a character
 #' string or a data frame.
 #'
 #' @param x Object.
@@ -19,6 +19,12 @@
 #' # Entire month:
 #' date(year = 2000, month = 9, day = 1:30)
 #'
+#' # Sorts out YYYYMMDD and DDMMYYYY:
+#' date(c("2000-01-19", "19-01-2000", "2000/01/19"))
+#'
+#' Apply to data frame:
+#' x <- data.frame(Year = 2000, Month = 01, Day = 1:30)
+#'
 #' @export date
 date <- function(x, ...) UseMethod("date")
 
@@ -29,10 +35,11 @@ date.default <- function(x, year, month, day, ...){
 
    # Parse 'year', 'month' and 'day' arguments:
    n <- c(length(year), length(month), length(day))
-   if (n %in% c(1, max(n))) stop("'year', 'month' or 'day' have inconsistent lengths.")
-   if (length(year) == 1) year <- rep(year, max(n))
+   if (length(year) == 1)  year  <- rep(year, max(n))
    if (length(month) == 1) month <- rep(month, max(n))
-   if (length(day) == 1) day <- rep(day, max(n))
+   if (length(day) == 1)   day   <- rep(day, max(n))
+   if ((length(year) != length(month)) | (length(month) != length(day)))
+      stop("'year', 'month' or 'day' have inconsistent lengths.")
    v <- paste0(year, "-", month, "-", day)
    return(date(paste0(year, "-", month, "-", day)))
 }
@@ -63,9 +70,9 @@ date.data.frame <- function(x, year, month, day, ...){
    names(x) <- tolower(names(x))
 
    # Look for date variable:
-   datevar <- names(x)[grep("^date", names(x))[1]]
-   if (length(datevar == 0)) datevar <- names(x)[grep("date$", names(x))[1]]
-
+   datevar <- names(x)[grep("^date", names(x))][1]
+   if (length(datevar == 0)) datevar <- names(x)[grep("date$", names(x))][1]
+   datevar <- datevar[!is.na(datevar)]
    # Process date variable:
    if (length(datevar) > 0){
       if (length(grep("POSIX", class(x[, datevar]))) > 0){
@@ -79,7 +86,7 @@ date.data.frame <- function(x, year, month, day, ...){
    datevars <- c(year  = grep("year", names(x))[1],
                  month = grep("month", names(x))[1],
                  day   = grep("day", names(x))[1])
-   if (length(datevars) != 3) stop("Unable to find date fields.")
+   if (length(datevars) != 3) stop("Unable to identity date fields.")
 
    # Collate and convert date fields:
    year  <- x[, datevars["year"]]

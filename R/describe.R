@@ -68,6 +68,7 @@ sumstr <- function(x, digits = 3, max = 10){
    return(v)
 }
 
+#' @describeIn describe Describe method for data frame objects.
 describe.data.frame <- function(x, indent = 3, ...){
    cat("\n")
    cat(paste(paste(dim(x), collapse = " x "), "data frame:\n"))

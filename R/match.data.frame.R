@@ -25,6 +25,7 @@
 #' @export match
 #' @export match.default
 #' @export match.data.frame
+
 match <- function(x, ...) UseMethod("match")
 
 #' @describeIn match Default match method, see \code{\link[base]{match}}.

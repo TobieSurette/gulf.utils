@@ -26,7 +26,7 @@ time <- function(x, ...) UseMethod("time")
 time.default <- function(x, date, time, year, month, day, hour = 0, minute = 0, second = 0, ...){
    if (missing(x) & missing(hour) & missing(time)) return(Sys.time())
    if (!missing(x)) return(stats::time(x, ...))
-   if (missing(date)) date <- paste0(year, "-", month, "-", day) else date <- as.character(date)
+   if (missing(date)) date <- paste0(year, "-", month, "-", day) else date <- date(as.character(date))
    if (missing(time)) time <- paste0(hour, ":", minute, ":", second)
    v <- as.POSIXlt(paste0(date ," ", time), tz = "")
 

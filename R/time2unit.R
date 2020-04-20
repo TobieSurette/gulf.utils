@@ -6,6 +6,19 @@
 #' @param reference Reference date, time or day of the week.
 #' @param units Time units: \code{secs}, \code{mins}, \code{hours} or \code{days}.
 #'
+#' @examples
+#' # Create sample dates:
+#' v <- date(c("2016-07-10", "2016-07-13", "2016-07-16", "2016-08-25", "2016-10-01"))
+#'
+#' time2sec(v)   # Number of seconds relative to default Jan 1st, 1970.
+#' time2sec(v, as.POSIXct("1900-01-01")) # Relative to default Jan 1st, 1900.
+#' time2min(v, "1900-01-01")
+#' time2hour(v, "1900-01-01")
+#' time2day(v, "1900-01-01")
+#'
+#' # Return the julian day for a set of dates.
+#' julian(v)
+#'
 #' @export time2unit
 #' @export time2sec
 #' @export time2min
