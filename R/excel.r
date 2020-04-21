@@ -19,6 +19,9 @@
 #' excel(x, header = FALSE)
 #'
 #' @export excel
+#' @export excel.default
+#' @export excel.data.frame
+
 excel <- function(x, ...) UseMethod("excel")
 
 #' @describeIn excel Default key method.

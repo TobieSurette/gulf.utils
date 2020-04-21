@@ -28,7 +28,7 @@ date(x, ...)
 Generally a \code{POSIXct} or \code{POSIXt} object.
 }
 \description{
-These are convenience functions to extract a date field from an object, such as a character
+These are wrapper functions to extract a date field from an object, such as a character
 string or a data frame.
 }
 \section{Methods (by class)}{
@@ -48,5 +48,11 @@ date(year = 2000, month = 9, day = 19)
 
 # Entire month:
 date(year = 2000, month = 9, day = 1:30)
+
+# Sorts out YYYYMMDD and DDMMYYYY:
+date(c("2000-01-19", "19-01-2000", "2000/01/19"))
+
+Apply to data frame:
+x <- data.frame(Year = 2000, Month = 01, Day = 1:30)
 
 }

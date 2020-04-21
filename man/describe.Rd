@@ -2,9 +2,12 @@
 % Please edit documentation in R/describe.R
 \name{describe}
 \alias{describe}
+\alias{describe.data.frame}
 \title{Describe Data Frame}
 \usage{
 describe(x, ...)
+
+\method{describe}{data.frame}(x, indent = 3, ...)
 }
 \arguments{
 \item{x}{Data frame.}
@@ -18,6 +21,11 @@ This function provides a description of the unique and missing elements of a dat
 Unique elements are sorted so that the minimum and maximum values are visible.
 The total number of missing and NA values are also shown when the occur.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{data.frame}: Describe method for data frame objects.
+}}
+
 \examples{
 # Create data frame
 x <- data.frame(categories = LETTERS[1:5],

@@ -20,6 +20,10 @@
 #' date(year = 2000, month = 9, day = 1:30)
 #'
 #' @export time
+#' @export time.default
+#' @export time.character
+#' @export time.data.frame
+#'
 time <- function(x, ...) UseMethod("time")
 
 #' @describeIn time Default time method.

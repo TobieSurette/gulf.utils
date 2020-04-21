@@ -49,6 +49,20 @@ Calculate time difference relative to a specified reference time.
 \item \code{week}: Calculate to in which \bold{week} of the year a date fall into.
 }}
 
+\examples{
+# Create sample dates:
+v <- date(c("2016-07-10", "2016-07-13", "2016-07-16", "2016-08-25", "2016-10-01"))
+
+time2sec(v)   # Number of seconds relative to default Jan 1st, 1970.
+time2sec(v, as.POSIXct("1900-01-01")) # Relative to default Jan 1st, 1900.
+time2min(v, "1900-01-01")
+time2hour(v, "1900-01-01")
+time2day(v, "1900-01-01")
+
+# Return the julian day for a set of dates.
+julian(v)
+
+}
 \seealso{
 \code{\link[base]{difftime}}
 }

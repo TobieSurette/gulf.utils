@@ -17,3 +17,7 @@ Character vector of files and directories.
 \description{
 This function lists available files and directories on a GitHub repository.
 }
+\examples{
+dir.github("TobieSurette", "gulf.utils")
+
+}
