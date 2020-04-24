@@ -85,7 +85,7 @@ time.data.frame <- function(x, ...){
       second <- as.numeric(substr(x$time, 7, 8))
       v <- time.default(year = x$year, month = x$month, day = x$day, hour = hour, minute = minute, second = second)
    }
-   if (all(c("date", "time") %in% names(x))) v <- date(paste0(x$date, " ", x$time, "AST"))
+   if (all(c("date", "time") %in% names(x))) v <- as.POSIXct(paste(x$date, x$time))
 
    if (is.null(v)) stop("Unable to convert time fields.")
    return(v)
