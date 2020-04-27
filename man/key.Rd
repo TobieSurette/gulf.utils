@@ -13,8 +13,6 @@ key(x, ...)
 \item{x}{Object.}
 
 \item{...}{Other arguments (not used).}
-
-\item{value}{Index key to be assigned.}
 }
 \description{
 Retrieve the variable name(s) which make up and index key for a given object.
@@ -29,4 +27,7 @@ x <- data.frame(year = 2010:2014, measurement = rnorm(5))
 key(x) <- "year" # Assign key.
 key(x) # Retrieve key.
 
+}
+\seealso{
+\code{\link{is.key}}
 }

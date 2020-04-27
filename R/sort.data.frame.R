@@ -17,18 +17,20 @@
 #' sort(x, by = c("u", "v"))  # Sort by both variables.
 #'
 #' @export sort.data.frame
-sort.data.frame <- function(x, by = NULL, increasing = TRUE){
+#'
+#' @seealso \code{\link[base]{order}}
+#'
+sort.data.frame <- function(x, by, increasing = TRUE){
    # SORT.DATA.FRAME - Sorts a data frame object.
 
-   if (is.null(by)){
-      by <- names(x)
-   }
+   # Define 'by':
+   if (missing(by)) if (attr(x, "key")) by <- key(x) else by <- names(x)
 
    # Check if all variables are in the target object.
    if (!all(by %in% names(x))) stop("Some column names are not in target object.")
 
    # Build and evaluate 'order' expression:
-   str <- "order("
+   str <- "base::order("
    for (i in 1:length(by)){
      if (i > 1) str <- paste(str, ",")
      str <- paste(str, "x[, '", by[i], "']", sep = "")
@@ -42,5 +44,6 @@ sort.data.frame <- function(x, by = NULL, increasing = TRUE){
    temp$row.names <- temp$row.names[index] # Sort row names.
    x <- x[index, , drop = FALSE] # Sort data frame.
    attributes(x) <- temp # Restore attributes.
+
    return(x)
 }

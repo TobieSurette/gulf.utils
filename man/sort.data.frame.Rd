@@ -27,3 +27,6 @@ sort(x, by = "v")
 sort(x, by = c("u", "v"))  # Sort by both variables.
 
 }
+\seealso{
+\code{\link[base]{order}}
+}
