@@ -1,80 +1,159 @@
-#' Describe Data Frame
+#' Describe Contents
 #'
-#' This function provides a description of the unique and missing elements of a data frame on the R console.
-#' Unique elements are sorted so that the minimum and maximum values are visible.
-#' The total number of missing and NA values are also shown when the occur.
+#' These functions provide a description of the summary contents of different types of R objects.
+#' Unique elements are shown and sorted so that the minimum and maximum values are visible. For
+#' integer values, ranges are shown. For data frames, the total number of NA or otherwise missing
+#' values are also shown.
 #'
 #' @param x Data frame.
-#'
+#' @param digits Number of significant digits to display for real numbers (default = 3).
+#' @param max Maximum number of different elements to display (default = 10).
+#' @param sep Character string specifying the separator to be used in concatenating unique values.
+#' @param indent Number of spaces to indent field variables when displaying a data frame (default = 3).
+#' @param ... Other arguments (not used).
+
 #' @examples
+#' # Integer examples:
+#' describe(1:10)
+#' describe(seq(2, 10, by = 2))
+#' describe(seq(2, 40, by = 2))
+#'
+#' # Decimal numeric examples:
+#' describe(rnorm(10))
+#' describe(rnorm(20))
+#'
+#' # Character string examples:
+#' describe(LETTERS[1:5])
+#' describe(LETTERS)
 #'
 #' # Create data frame
 #' x <- data.frame(categories = LETTERS[1:5],
 #'                 n = rpois(5),
 #'                 values = rnorm(5)))
-#'
 #' describe(x)
 #'
 #' # Bigger example:
-#'x <- data.frame(categories = LETTERS[1:25],
-#'                 n = rpois(25, lambda = 10),
-#'                 values = sample(c(rnorm(20), rep(NA, 5))),
-#'                 result = runif(25) > 0.3,
-#'                 missing = NA)
-#'
+#'x <- data.frame(categories = factor(sample(LETTERS[1:5], 25, replace = TRUE), levels = LETTERS[1:5]),
+#'                n = rpois(25, lambda = 10),
+#'                values = sample(c(rnorm(20), rep(NA, 5))),
+#'                result = runif(25) > 0.3,
+#'                missing = NA,
+#'                stringsAsFactors = FALSE)
 #' describe(x)
 #'
 #' @export describe
+#' @export describe.logical
+#' @export describe.numeric
+#' @export describe.character
+#' @export describe.factor
 #' @export describe.data.frame
 #'
-
 describe <- function(x, ...) UseMethod("describe")
 
-sumstr <- function(x, digits = 3, max = 10){
-   # Summary string function:
-   u <- sort(unique(x[!is.na(x)]))
-   na.number <- sum(is.na(x))
-   if (is.factor(x) | is.character(x)) sep = "', '" else sep = ", "
+#' @describeIn describe Summary contents of a logical vector.
+describe.logical <- function(x, ...){
+   ux <- sort(unique(x[!is.na(x)]))
+   return(paste0("{", paste0(ux, collapse = ", "), "}"))
+}
 
-   # String indicating data type:
-   class <- "   "
-   if (typeof(x) == "logical")   class <- "log"
-   if (typeof(x) == "integer")   class <- "int"
-   if (typeof(x) == "double")    class <- "num"
-   if (typeof(x) == "character") class <- "chr"
-   if (is.factor(x))             class <- "fac"
-
-   if (length(u) == 0){
-      v <- ""
-   }else{
-      if (class == "num") u <- format(u, digits = digits)
-      if (length(u) > max){
-         v <- paste(c(u[1:2], "...", tail(u, 2)), collapse = sep)
-      }else{
-         v <- paste(u, collapse = sep)
+#' @describeIn describe Summary contents of a numeric vector.
+describe.numeric <- function(x, digits = 3, max = 10, sep = "-", ...){
+   ux <- sort(unique(x[!is.na(x)]))
+   if (length(ux) == 0) return("{}")
+   if (any(ux < 0)) sep = " to "
+   if (length(ux) == 1) return(paste0("{", ux,"}"))
+   if (length(ux) == 2) return(paste0("{", ux[1], ", ", ux[2], "}"))
+   if (all((ux %% 1) == 0)){
+      # Integers:
+      du <- diff(ux)
+      index <- which(du > 1)
+      if (length(index) == 0) return(paste0("{", min(ux), sep, max(ux), "}"))
+      if (length(index) > max) return(paste0("{", min(ux), ",...,", max(ux), "}"))
+      if (ux[1] == ux[index[1]]) v <- ux[1] else v <- paste0(ux[1], sep, ux[index[1]])
+      if (length(index) > 1){
+         for (i in 1:(length(index)-1)) if (ux[index[i]+1] == ux[index[i+1]]) v[i+1] <- ux[index[i]+1] else v[i+1] <- paste0(ux[index[i]+1], sep, ux[index[i+1]])
       }
-      if (class %in% c("chr", "fac")) brackets <- c("{'", "'}") else brackets <- c("{", "}")
-      v <- paste0(brackets[1], v, brackets[2])
+      if (ux[index[length(index)]+1] == ux[length(ux)]) v[length(index)+1] <-  ux[length(ux)] else v[length(index)+1] <- paste0(ux[index[length(index)]+1], sep, ux[length(ux)])
+      v <- paste(v, collapse = ", ")
+   }else{
+      # Real numbers:
+      ux <- format(ux, digits = digits)
+      ux <- gsub(" ", "", ux)
+      if (length(ux) > max){
+         v <- paste0(c(ux[1:2], "...", tail(ux, 2)), collapse = ", ")
+      }else{
+         v <- paste0(ux, collapse = ", ")
+      }
    }
 
-   # Append data type:
-   v <- paste0(class, " : ", v)
-
-   # Append number of empty values:
-   if (class == "chr") na.number <- na.number + sum(gsub(" ", "", x[!is.na(x)]) == "") # Empty strings.
-   if ((na.number > 0) & (na.number < length(x))) v <- paste0(v, " (", na.number, " empty)")
-   if (na.number == length(x)) v <- paste0(v, "(empty)")
+   # Add brackets:
+   v <- paste0("{", v, "}")
 
    return(v)
 }
 
-describe.data.frame <- function(x, indent = 3){
+#' @describeIn describe Summary contents of a character vector.
+describe.character <- function(x, max = 10, sep = "', '", ...){
+   ux <- sort(unique(x[!is.na(x)]))
+   if (length(ux) > max){
+      v <- paste(c(ux[1:2], "...", tail(ux, 2)), collapse = sep)
+   }else{
+      v <- paste(ux, collapse = sep)
+   }
+
+   # Add brackets:
+   v <- paste0("{'", v, "'}")
+
+   return(v)
+}
+
+#' @describeIn describe Summary contents of a factor.
+describe.factor <- function(x, max = 10, sep = ", ", ...){
+   ux <- sort(unique(x[!is.na(x)]))
+   if (length(ux) > max){
+      v <- paste(c(ux[1:2], "...", tail(ux, 2)), collapse = sep)
+   }else{
+      v <- paste(ux, collapse = sep)
+   }
+
+   # Add brackets:
+   v <- paste0("{", v, "}")
+
+   return(v)
+}
+
+
+#' @describeIn describe Summary contents of a data frame.
+describe.data.frame <- function(x, indent = 3, ...){
    cat("\n")
    cat(paste(paste(dim(x), collapse = " x "), "data frame:\n"))
    fields <- names(x)
    for (i in 1:ncol(x)){
       spaces <- paste(rep(" ", indent + max(nchar(fields)) - nchar(fields[i])), collapse = "")
-      cat(paste0(spaces, "'", names(x)[i], "' : ", sumstr(x[,i]), "\n"))
+
+      # Summary string function:
+      na.number <- sum(is.na(x[, i]))
+
+      # String indicating data type:
+      class <- "   "
+      if (typeof(x[, i]) == "logical")   class <- "log"
+      if (typeof(x[, i]) == "integer")   class <- "int"
+      if (typeof(x[, i]) == "double")    class <- "num"
+      if (typeof(x[, i]) == "character") class <- "chr"
+      if (is.factor(x[, i]))             class <- "fac"
+
+      # Summary of contents:
+      v <- describe(x[, i])
+
+      # Append data type:
+      v <- paste0(class, " : ", v)
+
+      # Append number of empty values:
+      if (class == "chr") na.number <- na.number + sum(gsub(" ", "", x[!is.na(x)]) == "") # Empty strings.
+      if ((na.number > 0) & (na.number < length(x[,i]))) v <- paste0(v, " (", na.number, " empty)")
+      if (na.number == nrow(x)) v <- paste0(v, " (empty)")
+
+      cat(paste0(spaces, "'", names(x)[i], "' : ", v, "\n"))
    }
    cat("\n")
 }

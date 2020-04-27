@@ -1,6 +1,6 @@
 #' Pretty sequence of logarithmic values
 #'
-#' Returns a sequence of values on the logarithmic scale suitable for labelling on a logarithmic plot, i.e.
+#' @description Returns a sequence of values on the logarithmic scale suitable for labelling on a logarithmic plot, i.e.
 #' the values are equally spaced on the log-scale.
 #'
 #' @param x A numeric vector.
@@ -8,7 +8,6 @@
 #' @param ... Further arguments passed on to \code{\link[base]{pretty}}.
 #'
 #' @examples
-#'
 #' # Exponentail breakpoints across values from 0 to 10:
 #' pretty.log(0:10)
 #'

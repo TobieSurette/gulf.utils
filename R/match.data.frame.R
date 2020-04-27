@@ -1,8 +1,6 @@
-#' Match rows between two data frames.
+#' Match Data Frame Rows
 #'
-#' Returns the tow indices of a target data frame which match those of a source data frame.
-#'
-#' @aliases match match.default match.data.frame
+#' @description Returns the row indices of a target data frame which match those of a source data frame.
 #'
 #' @param x Source data frame whose elements will be searched for in the target data frame \code{y}.
 #' @param y Target data frame.
@@ -28,7 +26,6 @@
 #' @export match.default
 #' @export match.data.frame
 
-#' @describeIn match Generic match method.
 match <- function(x, ...) UseMethod("match")
 
 #' @describeIn match Default match method, see \code{\link[base]{match}}.

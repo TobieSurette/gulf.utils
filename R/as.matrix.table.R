@@ -7,10 +7,9 @@
 #' @return Logical value(s).
 #'
 #' @examples
-#'
 #' # Vector:
 #' x <- table(rpois(100, 5))
-#'   as.matrix(x)
+#' as.matrix(x)
 #'
 #' # Two dimensional contigency table:
 #' x <- table(data.frame(a = rpois(100, 5), b = rpois(100, 10)))

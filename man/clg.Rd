@@ -2,18 +2,38 @@
 % Please edit documentation in R/clg.R
 \name{clg}
 \alias{clg}
-\title{Clear graphics}
+\alias{clm}
+\alias{clc}
+\title{Clear}
 \usage{
 clg(x)
+
+clm()
+
+clc()
 }
 \arguments{
 \item{x}{Graphic handle(s)}
 }
 \description{
-Clear graphics
+Clears all graphics windows.
 }
+\section{Functions}{
+\itemize{
+\item \code{clm}: Clear all variables from memory.
+
+\item \code{clc}: Clear the R console.
+}}
+
 \examples{
+# Clear graphics:
 clg()
 clg(dev.list())
+
+# Clear variables:
+clm()
+
+# Clear R console:
+clc()
 
 }

@@ -9,4 +9,3 @@
 #'
 
 eps <- function() .Machine$double.eps
-

@@ -4,14 +4,13 @@
 \alias{match}
 \alias{match.default}
 \alias{match.data.frame}
-\title{Match rows between two data frames.}
+\title{Match Data Frame Rows}
 \usage{
 match(x, ...)
 
 \method{match}{default}(x, ...)
 
-\method{match}{data.frame}(x, y, by = base::intersect(names(x),
-  names(y)), ...)
+\method{match}{data.frame}(x, y, by = base::intersect(names(x), names(y)), ...)
 }
 \arguments{
 \item{x}{Source data frame whose elements will be searched for in the target data frame \code{y}.}
@@ -21,7 +20,7 @@ match(x, ...)
 \item{by}{Column name(s) which will be used for matching elements. The default is the common column names for \code{x} and \code{y}.}
 }
 \description{
-Returns the tow indices of a target data frame which match those of a source data frame.
+Returns the row indices of a target data frame which match those of a source data frame.
 }
 \section{Methods (by class)}{
 \itemize{

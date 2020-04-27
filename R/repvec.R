@@ -1,6 +1,6 @@
 #' Repeat vectors
 #'
-#' Create matrices by repeating vectors row-wise or column-wise a specified number of times.
+#' @description Create matrices by repeating vectors row-wise or column-wise a specified number of times.
 #'
 #' @param x Scalar or vector.
 #' @param n Integer specifying the number of times \code{x} is to be repeated.
