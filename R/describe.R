@@ -94,7 +94,7 @@ describe.numeric <- function(x, digits = 3, max = 10, sep = "-", ...){
 
 #' @describeIn describe Summary contents of a character vector.
 describe.character <- function(x, max = 10, sep = "', '", ...){
-   ux <- sort(unique(x[!is.na(x)]))
+   ux <- sort(unique(x[!is.na(x) & (x != "")]))
    if (length(ux) > max){
       v <- paste(c(ux[1:2], "...", tail(ux, 2)), collapse = sep)
    }else{
@@ -149,7 +149,7 @@ describe.data.frame <- function(x, indent = 3, ...){
       v <- paste0(class, " : ", v)
 
       # Append number of empty values:
-      if (class == "chr") na.number <- na.number + sum(gsub(" ", "", x[!is.na(x)]) == "") # Empty strings.
+      if (class == "chr") na.number <- sum(is.na(x[, i]) | gsub(" ", "", x[, i]) == "") # Empty strings.
       if ((na.number > 0) & (na.number < length(x[,i]))) v <- paste0(v, " (", na.number, " empty)")
       if (na.number == nrow(x)) v <- paste0(v, " (empty)")
 
