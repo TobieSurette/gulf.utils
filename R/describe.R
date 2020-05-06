@@ -1,15 +1,16 @@
 #' Describe Contents
 #'
-#' These functions provide a description of the summary contents of different types of R objects.
+#' These functions provide a summary description of the contents of different types of R objects.
 #' Unique elements are shown and sorted so that the minimum and maximum values are visible. For
-#' integer values, ranges are shown. For data frames, the total number of NA or otherwise missing
-#' values are also shown.
+#' integer values, ranges are shown. For data frames, the total number of NA or missing
+#' values are also shown, along with the contents of each variable field.
 #'
 #' @param x Data frame.
 #' @param digits Number of significant digits to display for real numbers (default = 3).
 #' @param max Maximum number of different elements to display (default = 10).
 #' @param sep Character string specifying the separator to be used in concatenating unique values.
 #' @param indent Number of spaces to indent field variables when displaying a data frame (default = 3).
+#' @param drop Logical value specifying whether to ignore empty variables in the output.
 #' @param ... Other arguments (not used).
 
 #' @examples
@@ -122,9 +123,8 @@ describe.factor <- function(x, max = 10, sep = ", ", ...){
    return(v)
 }
 
-
 #' @describeIn describe Summary contents of a data frame.
-describe.data.frame <- function(x, indent = 3, ...){
+describe.data.frame <- function(x, indent = 3, drop = FALSE, ...){
    cat("\n")
    cat(paste(paste(dim(x), collapse = " x "), "data frame:\n"))
    fields <- names(x)
@@ -143,7 +143,7 @@ describe.data.frame <- function(x, indent = 3, ...){
       if (is.factor(x[, i]))             class <- "fac"
 
       # Summary of contents:
-      v <- describe(x[, i])
+      v <- describe(x[, i], ...)
 
       # Append data type:
       v <- paste0(class, " : ", v)
@@ -153,7 +153,7 @@ describe.data.frame <- function(x, indent = 3, ...){
       if ((na.number > 0) & (na.number < length(x[,i]))) v <- paste0(v, " (", na.number, " empty)")
       if (na.number == nrow(x)) v <- paste0(v, " (empty)")
 
-      cat(paste0(spaces, "'", names(x)[i], "' : ", v, "\n"))
+      if (!drop | (na.number != nrow(x))) cat(paste0(spaces, "'", names(x)[i], "' : ", v, "\n"))
    }
    cat("\n")
 }

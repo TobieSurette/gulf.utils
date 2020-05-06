@@ -54,5 +54,6 @@ date(c("2000-01-19", "19-01-2000", "2000/01/19"))
 
 Apply to data frame:
 x <- data.frame(Year = 2000, Month = 01, Day = 1:30)
+date(x)
 
 }
