@@ -7,7 +7,7 @@ Set of utility functions for the southern Gulf of Saint Lawrence.
 ### Clearing functions:
 
 Function | Description
--------- | -------------
+-------- | --------------------------
 `clm`    | Clear varibles from memory
 `clg`    | Clear graphics windows
 `clc`    | Clear the **R** console
@@ -15,7 +15,7 @@ Function | Description
 ### Date and time functions:
 
 Function.   | Description
------------ | -------------
+----------- | --------------------------------------------------
 `date`      | Create, reformat or extract date objects.
 `time`      | Create, reformat or extract time objects.
 `time2sec`  | Convert time to seconds.
@@ -30,14 +30,14 @@ Function.   | Description
 These are functions which were added to extend `data.frame` objects' functionality:
 
 Function | Description
--------- | -------------
+-------- | -------------------------------------------------------------------
 `sort`   | Sort a data frame.
 `match`  | Return the row indices of matching entries between two data frames.
 
 ### Data export
 
 Function | Description
--------- | -------------
+-------- | -----------------------------
 `excel`  | Send data object to MS Excel.
 
 ### Metadata functions:
@@ -45,7 +45,8 @@ Function | Description
 These are functions to define or extract various types of metadata associated with a data object.
 
 Function      | Description
-------------- | -------------
+------------- | ------------------------------------------------------------------------
+`metadata`    | Extract metadata.
 `key`         | Set or extract an index key for a data table.
 `description` | Set or extract a text description(s) for a data table or variable field.
 `format`      | Set or extract the format defintion of a variable field.
