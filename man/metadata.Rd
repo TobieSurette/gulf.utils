@@ -3,7 +3,7 @@
 \name{metadata}
 \alias{metadata}
 \alias{metadata.data.frame}
-\title{Extract Metadata}
+\title{Retrieve Metadata}
 \usage{
 metadata(x, ...)
 
@@ -15,13 +15,27 @@ metadata(x, ...)
 \item{...}{Other arguments (not used).}
 }
 \description{
-Function to extract metadata from an object.
+Function to retrieve metadata from an object.
 }
 \section{Methods (by class)}{
 \itemize{
 \item \code{data.frame}: Extract metadata for a data frame.
 }}
 
+\examples{
+# Define sample data set:
+x <- data.frame(year = 2010:2014, site = letters[1:5], weight = exp(rnorm(5)), number = rpois(5,5))
+
+# Define metadata attributes:
+units(x, "weight") <- "kilogram"
+desrciption(x) <- c(year = "Year of sampling", site = "Sampling site", weight = "Weight of specimen", number = "Number observed")
+fmt(x, "year") <- "YYYY"
+key(x) <- "year"
+
+# Retrieve metadata:
+metadata(x)
+
+}
 \seealso{
 \code{\link{key}}, \code{\link{description}}, \code{\link{units}}, \code{\link{fmt}}
 }

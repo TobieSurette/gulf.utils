@@ -48,6 +48,7 @@
       if (is.null(value)){
          tmp <- tmp[setdiff(names(tmp), y)]
       }else{
+         if ((length(value) == 1) & (length(y) > 1)) value <- rep(value, length(y))
          if (length(y) != length(value)) stop("Named arguments must be the same length as assigned values.")
          tmp[y] <- as.vector(value)
       }
