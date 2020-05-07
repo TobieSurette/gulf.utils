@@ -18,9 +18,12 @@
 #' description(x, "measurement") <- "Length of the specimen."
 #'
 #' # ... or equivalently:
-#' description(x, c("year", "measurement")) <- c("Year the sample was taken.", "Length of the specimen.")
-#' description(x) <- c(year = "Year the sample was taken.", measurement = "Length of the specimen.")
-#' description(x) <- list(year = "Year the sample was taken.", measurement = "Length of the specimen.")
+#' description(x, c("year", "measurement")) <- c("Year the sample was taken.",
+#'   "Length of the specimen.")
+#' description(x) <- c(year = "Year the sample was taken.",
+#'   measurement = "Length of the specimen.")
+#' description(x) <- list(year = "Year the sample was taken.",
+#'   measurement = "Length of the specimen.")
 #'
 #' # Show attributes:
 #' attributes(x)

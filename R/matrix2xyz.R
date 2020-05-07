@@ -106,7 +106,7 @@ xyz2matrix <- function(x, y, z, fun){
       stop("There are duplicate index values and 'fun' is undefined.")
    if (!missing(fun)){
       if (length(unique(i)) < length(i)){
-         temp <- aggregate(z, by = list(i), fun)
+         temp <- stats::aggregate(z, by = list(i), fun)
          i <- temp[, 1]
          z <- temp[, 2]
       }

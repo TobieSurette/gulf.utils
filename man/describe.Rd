@@ -32,6 +32,8 @@ describe(x, ...)
 
 \item{sep}{Character string specifying the separator to be used in concatenating unique values.}
 
+\item{indent}{Number of spaces to indent field variables when displaying a data frame (default = 3).}
+
 \item{drop}{Logical value specifying whether to ignore empty variables in the output.}
 }
 \description{
@@ -74,7 +76,8 @@ x <- data.frame(categories = LETTERS[1:5],
 describe(x)
 
 # Bigger example:
-x <- data.frame(categories = factor(sample(LETTERS[1:5], 25, replace = TRUE), levels = LETTERS[1:5]),
+x <- data.frame(categories = factor(sample(LETTERS[1:5], 25, replace = TRUE),
+               levels = LETTERS[1:5]),
                n = rpois(25, lambda = 10),
                values = sample(c(rnorm(20), rep(NA, 5))),
                result = runif(25) > 0.3,

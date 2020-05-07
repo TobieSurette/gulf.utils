@@ -34,7 +34,8 @@
 #' describe(x)
 #'
 #' # Bigger example:
-#'x <- data.frame(categories = factor(sample(LETTERS[1:5], 25, replace = TRUE), levels = LETTERS[1:5]),
+#'x <- data.frame(categories = factor(sample(LETTERS[1:5], 25, replace = TRUE),
+#'                levels = LETTERS[1:5]),
 #'                n = rpois(25, lambda = 10),
 #'                values = sample(c(rnorm(20), rep(NA, 5))),
 #'                result = runif(25) > 0.3,
@@ -81,7 +82,7 @@ describe.numeric <- function(x, digits = 3, max = 10, sep = "-", ...){
       ux <- format(ux, digits = digits)
       ux <- gsub(" ", "", ux)
       if (length(ux) > max){
-         v <- paste0(c(ux[1:2], "...", tail(ux, 2)), collapse = ", ")
+         v <- paste0(c(ux[1:2], "...", utils::tail(ux, 2)), collapse = ", ")
       }else{
          v <- paste0(ux, collapse = ", ")
       }
@@ -97,7 +98,7 @@ describe.numeric <- function(x, digits = 3, max = 10, sep = "-", ...){
 describe.character <- function(x, max = 10, sep = "', '", ...){
    ux <- sort(unique(x[!is.na(x) & (x != "")]))
    if (length(ux) > max){
-      v <- paste(c(ux[1:2], "...", tail(ux, 2)), collapse = sep)
+      v <- paste(c(ux[1:2], "...", utils::tail(ux, 2)), collapse = sep)
    }else{
       v <- paste(ux, collapse = sep)
    }
@@ -112,7 +113,7 @@ describe.character <- function(x, max = 10, sep = "', '", ...){
 describe.factor <- function(x, max = 10, sep = ", ", ...){
    ux <- sort(unique(x[!is.na(x)]))
    if (length(ux) > max){
-      v <- paste(c(ux[1:2], "...", tail(ux, 2)), collapse = sep)
+      v <- paste(c(ux[1:2], "...", utils::tail(ux, 2)), collapse = sep)
    }else{
       v <- paste(ux, collapse = sep)
    }
