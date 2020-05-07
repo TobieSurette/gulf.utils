@@ -1,6 +1,6 @@
 # gulf.utils
 
-Set of utility functions for the southern Gulf of Saint Lawrence. 
+Set of utility functions used to develop the 'gulf' family of packages. 
 
 ## Function overview:
 
@@ -34,7 +34,7 @@ Function | Description
 `sort`   | Sort a data frame.
 `match`  | Return the row indices of matching entries between two data frames.
 
-### Data export
+### Data export functions:
 
 Function | Description
 -------- | -----------------------------
@@ -42,12 +42,12 @@ Function | Description
 
 ### Metadata functions:
 
-These are functions to define or extract various types of metadata associated with a data object.
+These are functions to define or retrieve various types of metadata associated with a data object.
 
 Function      | Description
 ------------- | ------------------------------------------------------------------------
-`metadata`    | Extract metadata.
-`key`         | Set or extract an index key for a data table.
-`description` | Set or extract a text description(s) for a data table or variable field.
-`format`      | Set or extract the format defintion of a variable field.
-`units`       | Set or extract the units of a variable field.
+`metadata`    | Retrieve metadata.
+`key`         | Set or retrieve an index key for a data table.
+`description` | Set or retrieve a text description(s) for a data table or variable field.
+`fmt`         | Set or retrieve the format defintion of a variable field.
+`units`       | Set or retrieve the units of a variable field.
