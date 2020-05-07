@@ -26,13 +26,13 @@ describe(x, ...)
 
 \item{...}{Other arguments (not used).}
 
-\item{digits}{Number of significant digits to display for real numbers.}
+\item{digits}{Number of significant digits to display for real numbers (default = 3).}
 
-\item{max}{Maximum number of different elements to display.}
+\item{max}{Maximum number of different elements to display (default = 10).}
 
 \item{sep}{Character string specifying the separator to be used in concatenating unique values.}
 
-\item{indent}{Number of indent spaces (default = 3).}
+\item{indent}{Number of spaces to indent field variables when displaying a data frame (default = 3).}
 }
 \description{
 These functions provide a description of the summary contents of different types of R objects.

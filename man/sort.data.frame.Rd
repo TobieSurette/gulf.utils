@@ -4,7 +4,7 @@
 \alias{sort.data.frame}
 \title{Sort Data Frame}
 \usage{
-\method{sort}{data.frame}(x, by = NULL, increasing = TRUE)
+\method{sort}{data.frame}(x, by, increasing = TRUE)
 }
 \arguments{
 \item{x}{Data frame.}
