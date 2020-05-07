@@ -17,4 +17,4 @@ lexicon.default <- function(x, file){
 }
 
 #' @describeIn lexicon Returns a character vector of component words.
-lexicon.character <- function(x) return(unique(unlist(strsplit(x, " "))))
+lexicon.character <- function(x) return(unique(unlist(strsplit(x, "[ ();]"))))

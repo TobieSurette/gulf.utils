@@ -19,7 +19,7 @@ describe(x, ...)
 
 \method{describe}{factor}(x, max = 10, sep = ", ", ...)
 
-\method{describe}{data.frame}(x, indent = 3, ...)
+\method{describe}{data.frame}(x, indent = 3, drop = FALSE, ...)
 }
 \arguments{
 \item{x}{Data frame.}
@@ -32,13 +32,13 @@ describe(x, ...)
 
 \item{sep}{Character string specifying the separator to be used in concatenating unique values.}
 
-\item{indent}{Number of spaces to indent field variables when displaying a data frame (default = 3).}
+\item{drop}{Logical value specifying whether to ignore empty variables in the output.}
 }
 \description{
-These functions provide a description of the summary contents of different types of R objects.
+These functions provide a summary description of the contents of different types of R objects.
 Unique elements are shown and sorted so that the minimum and maximum values are visible. For
-integer values, ranges are shown. For data frames, the total number of NA or otherwise missing
-values are also shown.
+integer values, ranges are shown. For data frames, the total number of NA or missing
+values are also shown, along with the contents of each variable field.
 }
 \section{Methods (by class)}{
 \itemize{

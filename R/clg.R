@@ -36,7 +36,7 @@ clg <- function(x){
 }
 
 #' @describeIn clg Clear all variables from memory.
-clm <- function() rm(list = ls())
+clm <- function() rm(list = ls(), environment = globalenv())
 
 #' @describeIn clg Clear the R console.
 clc <- function() cat("\014")

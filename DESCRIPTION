@@ -1,9 +1,9 @@
 Package: gulf.utils
 Type: Package
-Title: Southern Gulf Utility Functions
+Title: Southern Gulf of Saint Lawrence Utility Functions
 Version: 0.1.0
 Authors@R: as.person(c("Tobie Surette <Tobie.Surette@dfo-mpo.gc.ca> [aut, cre]"))
-Description: Basic utility functions for use in the Southern Gulf of Saint Lawrence
+Description: Set of utility functions used to develop the 'gulf' family of packages.
 License: GPL
 Encoding: UTF-8
 LazyData: true
