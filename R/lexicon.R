@@ -4,6 +4,7 @@
 #'
 #' @param x Character vector or an object coercible to a text objexct.
 #' @param file Character vector specifying a file to be read.
+#' @param ... Further arguments (not used).
 #'
 #' @export lexicon
 #' @export lexicon.default
@@ -12,9 +13,9 @@
 lexicon <- function(x, ...) UseMethod("lexicon")
 
 #' @describeIn lexicon Returns a character vector of component words.
-lexicon.default <- function(x, file){
+lexicon.default <- function(x, file, ...){
    if (!missing(file)) return(lexicon(readLines(file)))
 }
 
 #' @describeIn lexicon Returns a character vector of component words.
-lexicon.character <- function(x) return(unique(unlist(strsplit(x, "[ ();]"))))
+lexicon.character <- function(x, ...) return(unique(unlist(strsplit(x, "[ ();]"))))

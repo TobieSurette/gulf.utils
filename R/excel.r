@@ -7,7 +7,7 @@
 #' @param x Data frame.
 #' @param header Logical value specifying whether data frame column names should be exported.
 #' @param row.names Logical value specifying whether data frame row names should be exported.
-#' @param Further arguments passed onto the \code{\link[utils]{write.table}} function.
+#' @param ... Further arguments passed onto the \code{\link[utils]{write.table}} function.
 #'
 #' @examples
 #'

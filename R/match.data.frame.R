@@ -4,7 +4,9 @@
 #'
 #' @param x Source data frame whose elements will be searched for in the target data frame \code{y}.
 #' @param y Target data frame.
-#' @param by Column name(s) which will be used for matching elements. The default is the common column names for \code{x} and \code{y}.
+#' @param by Column name(s) which will be used for matching elements.
+#'           The default is the common column names for \code{x} and \code{y}.
+#' @param ... Further arguments passed onto \code{\linke[base]{match}}.
 #'
 #' @examples
 #' # Create a simple data frame:
@@ -53,11 +55,12 @@ match.data.frame <- function(x, y, by = base::intersect(names(x), names(y)), ...
    # Find the indices:
    if (length(by) == 1){
       # Use usual vector-based 'match' function:
-      index <- base::match(x[, by], y[, by])
+      index <- base::match(x[, by], y[, by], ...)
    }else{
       # Merge index column from 'y' into 'x':
       index <- base::match(apply(x[by], 1, function(x) paste0(x, collapse = "-t-")),
-                           apply(y[by], 1, function(x) paste0(x, collapse = "-t-")))
+                           apply(y[by], 1, function(x) paste0(x, collapse = "-t-")),
+                           ...)
    }
 
    return(index)

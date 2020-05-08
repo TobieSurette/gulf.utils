@@ -4,20 +4,34 @@
 #' string or a data frame.
 #'
 #' @param x Object.
+#' @param date Date object or formatted character string representing a date.
+#' @param time Time object or formatted character string representing a time.
 #' @param year Date year.
 #' @param month Date month.
 #' @param day Date day.
+#' @param hour Time hour.
+#' @param minute Time minute.
+#' @param second Time second.
+#' @param ... Further arguments passed onto
 #'
 #' @return Generally a \code{POSIXct} or \code{POSIXt} object.
 #'
 #' @examples
-#' time() # Base method.
+#' time() # Current time (base method).
 #'
-#' # Single day:
-#' date(year = 2000, month = 9, day = 19)
+#' # Equivalent nine o'clock specification:
+#' time(9)
+#' time("9")
+#' time("9h")
+#' time("9h00")
+#' time("9:00")
+#' time("9:00:00")
 #'
-#' # Entire month:
-#' date(year = 2000, month = 9, day = 1:30)
+#' # All equivalent time strings:
+#' time("194501")
+#' time("19:45:01")
+#' time("19h45m01")
+#' time("19h45m01")
 #'
 #' @export time
 #' @export time.default
@@ -37,36 +51,82 @@ time.default <- function(x, date, time, year, month, day, hour = 0, minute = 0, 
    return(v)
 }
 
+#' @describeIn time Convert time from logical value.
+time.logical <- function(x) return(time(as.numeric(x)))
+
+#' @describeIn time Convert time from numeric value.
+time.numeric <- function(x){
+   hour <- floor(x)
+   hour[(hour < 0) & (hour > 24)] <- NA
+   min <- 60 * (x %% 1)
+   sec <- floor(60 * (min %% 1))
+   min <- floor(min)
+
+   v <- rep("", length(x))
+   index <- which((x >= 0) & (x <= 24))
+   if (length(index) > 0) v[index] <- paste0(hour[index], ":", min[index], ":", sec[index])
+
+   return(time(v))
+}
+
 #' @describeIn time Convert time from character string.
 time.character <- function(x){
    # Initialize variables:
-   min <- hour <- rep(NA, length(x))
-   sec <- rep(0, length(x))
+   hour <- rep(NA, length(x))
+   min <- rep(NA, length(x))
+   sec <- rep(NA, length(x))
 
-   # Format = "hh"
-   index <- nchar(x) <= 2
-   hour[index] <- as.numeric(x[index])
+   # "hhmmss"-type formats:
+   index <- setdiff(1:length(x), grep("[:a-z]", x))
+   if (length(index) > 0){
+      # Format = "hh"
+      ii <- nchar(x[index]) <= 2
+      hour[index[ii]] <- as.numeric(x[index[ii]])
 
-   # Format = "hhmm"
-   index <- nchar(x) == 4
-   hour[index] <- as.numeric(substr(x[index], 1, 2))
-   min[index]  <- as.numeric(substr(x[index], 3, 4))
+      # Format = "hhmm"
+      ii <- nchar(x[index]) == 4
+      hour[index[ii]] <- as.numeric(substr(x[index[ii]], 1, 2))
+      min[index[ii]]  <- as.numeric(substr(x[index[ii]], 3, 4))
 
-   # Format = "hhmmss"
-   index <- nchar(x) == 6
-   hour[index] <- as.numeric(substr(x[index], 1, 2))
-   min[index]  <- as.numeric(substr(x[index], 3, 4))
-   sec[index]  <- as.numeric(substr(x[index], 5, 6))
+      # Format = "hhmmss"
+      ii <- nchar(x[index]) == 6
+      hour[index[ii]] <- as.numeric(substr(x[index[ii]], 1, 2))
+      min[index[ii]]  <- as.numeric(substr(x[index[ii]], 3, 4))
+      sec[index[ii]]  <- as.numeric(substr(x[index[ii]], 5, 6))
+   }
 
-   # Format = "hh:mm:ss"
+   # "hh:mm:ss"-type formats:
    index <- grep(":", x)
-   y <- strsplit(x[index], ":")
-   hour[index] <- as.numeric(unlist(lapply(y, function(x) x[1])))
-   min[index] <- as.numeric(unlist(lapply(y, function(x) x[2])))
-   sec[index] <- as.numeric(unlist(lapply(y, function(x) x[2])))
+   if (length(index) > 0){
+      hour[index] <- as.numeric(unlist(lapply(strsplit(x[index], ":"), function(x) x[1])))
+      min[index] <- as.numeric(unlist(lapply(strsplit(x[index], ":"), function(x) x[2])))
+      sec[index] <- as.numeric(unlist(lapply(strsplit(x[index], ":"), function(x) x[3])))
+   }
 
-   index <- nchar(x) > 8
-   v[index] <- as.POSIXct(x[index])
+    # Format = "9h30m59s"
+   index <- grep("[0-9][h]", x)
+   if (length(index) > 0){
+      hour[index] <- as.numeric(unlist(lapply(strsplit(tolower(x[index]), "[hms]"), function(x) x[1])))
+      min[index] <- as.numeric(unlist(lapply(strsplit(tolower(x[index]), "[hms]"), function(x) x[2])))
+      sec[index] <- as.numeric(unlist(lapply(strsplit(tolower(x[index]), "[hms]"), function(x) x[3])))
+   }
+
+   # Set error values to NA:
+   index <- which((hour > 99) | (hour < 0) | (min > 59) | (min < 0) | (sec > 59) | (sec < 0))
+   hour[index] <- NA
+   min[index] <- NA
+   sec[index] <- NA
+
+   # Minutes and seconds to zero when hour is known:
+   min[!is.na(hour) & is.na(min)] <- 0
+   sec[!is.na(hour) & is.na(sec)] <- 0
+
+   index <- !is.na(hour) & !is.na(min) & !is.na(sec)
+   v <- rep("", length(x))
+   v[index] <- paste0(format(hour[index], width = 2), ":",
+                      format(min[index], width = 2), ":",
+                      format(sec[index], width = 2))
+   v[index] <- gsub(" ", "0", v[index])
 
    return(v)
 }

@@ -11,7 +11,8 @@
 #'
 #' # Define metadata attributes:
 #' units(x, "weight") <- "kilogram"
-#' desrciption(x) <- c(year = "Year of sampling", site = "Sampling site", weight = "Weight of specimen", number = "Number observed")
+#' desrciption(x) <- c(year = "Year of sampling", site = "Sampling site",
+#'                     weight = "Weight of specimen", number = "Number observed")
 #' fmt(x, "year") <- "YYYY"
 #' key(x) <- "year"
 #'
@@ -19,6 +20,9 @@
 #' metadata(x)
 #'
 #' @seealso \code{\link{key}}, \code{\link{description}}, \code{\link{units}}, \code{\link{fmt}}
+#'
+#' @export metadata
+#' @export metadata.data.frame
 #'
 metadata <- function(x, ...) UseMethod("metadata")
 
@@ -40,3 +44,4 @@ metadata.data.frame <- function(x, ...){
 
    return(res)
 }
+

@@ -1,6 +1,6 @@
 #' Describe Contents
 #'
-#' These functions provide a summary description of the contents of different types of R objects.
+#' @description These functions provide a summary description of the contents of different types of R objects.
 #' Unique elements are shown and sorted so that the minimum and maximum values are visible. For
 #' integer values, ranges are shown. For data frames, the total number of NA or missing
 #' values are also shown, along with the contents of each variable field.
@@ -81,7 +81,7 @@ describe.numeric <- function(x, digits = 3, max = 10, sep = "-", ...){
       ux <- format(ux, digits = digits)
       ux <- gsub(" ", "", ux)
       if (length(ux) > max){
-         v <- paste0(c(ux[1:2], "...", tail(ux, 2)), collapse = ", ")
+         v <- paste0(c(ux[1:2], "...", utils::tail(ux, 2)), collapse = ", ")
       }else{
          v <- paste0(ux, collapse = ", ")
       }
@@ -97,7 +97,7 @@ describe.numeric <- function(x, digits = 3, max = 10, sep = "-", ...){
 describe.character <- function(x, max = 10, sep = "', '", ...){
    ux <- sort(unique(x[!is.na(x) & (x != "")]))
    if (length(ux) > max){
-      v <- paste(c(ux[1:2], "...", tail(ux, 2)), collapse = sep)
+      v <- paste(c(ux[1:2], "...", utils::tail(ux, 2)), collapse = sep)
    }else{
       v <- paste(ux, collapse = sep)
    }
@@ -112,7 +112,7 @@ describe.character <- function(x, max = 10, sep = "', '", ...){
 describe.factor <- function(x, max = 10, sep = ", ", ...){
    ux <- sort(unique(x[!is.na(x)]))
    if (length(ux) > max){
-      v <- paste(c(ux[1:2], "...", tail(ux, 2)), collapse = sep)
+      v <- paste(c(ux[1:2], "...", utils::tail(ux, 2)), collapse = sep)
    }else{
       v <- paste(ux, collapse = sep)
    }

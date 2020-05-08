@@ -12,4 +12,4 @@
 #'
 #' @export is.installed
 #'
-is.installed <- function(package.name) is.element(package.name, installed.packages()[,1])
+is.installed <- function(package.name) is.element(package.name, utils::installed.packages()[,1])
