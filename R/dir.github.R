@@ -13,7 +13,6 @@
 #' @export dir.github
 #'
 dir.github <- function(username, repository){
-   require(httr)
    http <- paste0("https://api.github.com/repos/", username, "/", repository, "/git/trees/master?recursive=1")
    req <- httr::GET(http)
    httr::stop_for_status(req)

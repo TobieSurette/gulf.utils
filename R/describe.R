@@ -34,7 +34,8 @@
 #' describe(x)
 #'
 #' # Bigger example:
-#'x <- data.frame(categories = factor(sample(LETTERS[1:5], 25, replace = TRUE), levels = LETTERS[1:5]),
+#'x <- data.frame(categories = factor(sample(LETTERS[1:5], 25, replace = TRUE),
+#'                levels = LETTERS[1:5]),
 #'                n = rpois(25, lambda = 10),
 #'                values = sample(c(rnorm(20), rep(NA, 5))),
 #'                result = runif(25) > 0.3,

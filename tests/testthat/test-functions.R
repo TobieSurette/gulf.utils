@@ -1,27 +1,8 @@
 context("Function tests")
-library(gulf)
+library(gulf.utils)
 
-test_that("function deg2km works", {
-  expect_equal(deg2km(-63.123, 47.56)$x, 490.747, tolerance=1e-3)
-  expect_equal(deg2km(-63.123, 47.56)$y, 5267.405, tolerance=1e-3)
-  }
-)
-
-test_that("function deg2.str works", {
-  expect_match(gulf::deg.str(45), "45°")
-  expect_match(gulf::deg.str(47.5), "47°30'")
-}
-)
-
-test_that("function deg2dmm works", {
-  expect_equal(gulf::deg2dmm(45.25), 4515)
-}
-)
-
-test_that("functions longitude and latitude work for RV sets", {
-  x <- read.card(year=2018)
-  expect_equal(longitude(x[1,]), -65.49108, tolerance=1e-4)
-  expect_equal(latitude(x[1,]), 47.90467, tolerance=1e-3)
-  }
-)
-
+#test_that("function deg2km works", {
+#  expect_equal(deg2km(-63.123, 47.56)$x, 490.747, tolerance=1e-3)
+#  expect_equal(deg2km(-63.123, 47.56)$y, 5267.405, tolerance=1e-3)
+#  }
+#)
