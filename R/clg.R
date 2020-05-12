@@ -7,7 +7,7 @@
 #' @examples
 #' # Clear graphics:
 #' clg()
-#' clg(dev.list())
+#' clg(grDevices::dev.list())
 #'
 #' # Clear variables:
 #' clm()
@@ -28,7 +28,7 @@ clg <- function(x){
          grDevices::graphics.off()
       }else{
          x <- round(as.numeric(x))
-         if (all(x < 0)) x <- grDevices::dev.list()[!(dev.list() %in% abs(x))]
+         if (all(x < 0)) x <- grDevices::dev.list()[!(grDevices::dev.list() %in% abs(x))]
          x <- unique(x)
          x <- x[x %in% grDevices::dev.list()]
          for (i in 1:length(x)) grDevices::dev.off(x[i])

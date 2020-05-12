@@ -15,11 +15,11 @@ excel(x, ...)
 \arguments{
 \item{x}{Data frame.}
 
+\item{...}{Further arguments passed onto the \code{\link[utils]{write.table}} function.}
+
 \item{header}{Logical value specifying whether data frame column names should be exported.}
 
 \item{row.names}{Logical value specifying whether data frame row names should be exported.}
-
-\item{Further}{arguments passed onto the \code{\link[utils]{write.table}} function.}
 }
 \description{
 This function dumps a data frame into a temporary tab-delimited table and opens an Excel session for the file.

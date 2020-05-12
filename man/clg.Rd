@@ -28,7 +28,7 @@ Clears all graphics windows.
 \examples{
 # Clear graphics:
 clg()
-clg(dev.list())
+clg(grDevices::dev.list())
 
 # Clear variables:
 clm()

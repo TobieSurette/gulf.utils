@@ -15,9 +15,12 @@ match(x, ...)
 \arguments{
 \item{x}{Source data frame whose elements will be searched for in the target data frame \code{y}.}
 
+\item{...}{Further arguments passed onto \code{\link[base]{match}}.}
+
 \item{y}{Target data frame.}
 
-\item{by}{Column name(s) which will be used for matching elements. The default is the common column names for \code{x} and \code{y}.}
+\item{by}{Column name(s) which will be used for matching elements.
+The default is the common column names for \code{x} and \code{y}.}
 }
 \description{
 Returns the row indices of a target data frame which match those of a source data frame.
