@@ -3,6 +3,8 @@
 \name{time}
 \alias{time}
 \alias{time.default}
+\alias{time.logical}
+\alias{time.numeric}
 \alias{time.character}
 \alias{time.data.frame}
 \title{Time Extraction and Conversion}
@@ -11,6 +13,10 @@ time(x, ...)
 
 \method{time}{default}(x, date, time, year, month, day, hour = 0, minute = 0, second = 0, ...)
 
+\method{time}{logical}(x)
+
+\method{time}{numeric}(x)
+
 \method{time}{character}(x)
 
 \method{time}{data.frame}(x, ...)
@@ -18,11 +24,23 @@ time(x, ...)
 \arguments{
 \item{x}{Object.}
 
+\item{...}{Further arguments passed onto}
+
+\item{date}{Date object or formatted character string representing a date.}
+
+\item{time}{Time object or formatted character string representing a time.}
+
 \item{year}{Date year.}
 
 \item{month}{Date month.}
 
 \item{day}{Date day.}
+
+\item{hour}{Time hour.}
+
+\item{minute}{Time minute.}
+
+\item{second}{Time second.}
 }
 \value{
 Generally a \code{POSIXct} or \code{POSIXt} object.
@@ -35,18 +53,30 @@ string or a data frame.
 \itemize{
 \item \code{default}: Default time method.
 
+\item \code{logical}: Convert time from logical value.
+
+\item \code{numeric}: Convert time from numeric value.
+
 \item \code{character}: Convert time from character string.
 
 \item \code{data.frame}: Extract time from data frame.
 }}
 
 \examples{
-time() # Base method.
+time() # Current time (base method).
 
-# Single day:
-date(year = 2000, month = 9, day = 19)
+# Equivalent nine o'clock specification:
+time(9)
+time("9")
+time("9h")
+time("9h00")
+time("9:00")
+time("9:00:00")
 
-# Entire month:
-date(year = 2000, month = 9, day = 1:30)
+# All equivalent time strings:
+time("194501")
+time("19:45:01")
+time("19h45m01")
+time("19h45m01")
 
 }

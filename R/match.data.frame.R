@@ -6,7 +6,7 @@
 #' @param y Target data frame.
 #' @param by Column name(s) which will be used for matching elements.
 #'           The default is the common column names for \code{x} and \code{y}.
-#' @param ... Further arguments passed onto \code{\linke[base]{match}}.
+#' @param ... Further arguments passed onto \code{\link[base]{match}}.
 #'
 #' @examples
 #' # Create a simple data frame:

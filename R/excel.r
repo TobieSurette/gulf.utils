@@ -39,7 +39,7 @@ excel.data.frame <- function(x, header = TRUE, row.names = FALSE, ...){
 
    # Call Excel:
    if (.Platform$OS.type == "unix") command <- paste0("open ", file, ' -a "Microsoft Excel"')
-   if (.Platform$OS.type != "unix") command <- paste0('start excel "', file, '" /e')
+   if (.Platform$OS.type != "unix") command <- paste0("start excel ", file, '" /e')
 
    b <- base::system(command, intern = TRUE, wait = TRUE)
 

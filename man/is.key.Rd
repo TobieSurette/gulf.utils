@@ -30,7 +30,7 @@ Checks whether an index key exists or is valid.
 }}
 
 \examples{
-Build sample data:
+# Build sample data:
 x <- data.frame(year = 1990:2014, measurement = rpois(25))
 key(x) <- "year" # Assign key.
 
