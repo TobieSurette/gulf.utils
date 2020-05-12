@@ -1,6 +1,6 @@
 # gulf.utils
 
-Set of utility functions used to develop the 'gulf' family of packages. 
+Set of utility functions used to develop the 'gulf' packages. 
 
 ## Data description:
 
