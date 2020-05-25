@@ -71,8 +71,8 @@ describe(LETTERS)
 
 # Create data frame
 x <- data.frame(categories = LETTERS[1:5],
-                n = rpois(5),
-                values = rnorm(5)))
+                n = rpois(5, lambda=1),
+                values = rnorm(5))
 describe(x)
 
 # Bigger example:
