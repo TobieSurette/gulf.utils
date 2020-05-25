@@ -57,3 +57,6 @@ x <- data.frame(Year = 2000, Month = 01, Day = 1:30)
 date(x)
 
 }
+\seealso{
+\code{\link{time}}
+}

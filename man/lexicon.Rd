@@ -8,12 +8,14 @@
 \usage{
 lexicon(x, ...)
 
-\method{lexicon}{default}(x, file)
+\method{lexicon}{default}(x, file, ...)
 
-\method{lexicon}{character}(x)
+\method{lexicon}{character}(x, ...)
 }
 \arguments{
 \item{x}{Character vector or an object coercible to a text objexct.}
+
+\item{...}{Further arguments (not used).}
 
 \item{file}{Character vector specifying a file to be read.}
 }

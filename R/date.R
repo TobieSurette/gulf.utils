@@ -10,6 +10,8 @@
 #'
 #' @return Generally a \code{POSIXct} or \code{POSIXt} object.
 #'
+#' @seealso \code{\link{time}}
+#'
 #' @examples
 #' date() # Base method.
 #'

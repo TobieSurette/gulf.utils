@@ -27,7 +27,7 @@ excel <- function(x, ...) UseMethod("excel")
 #' @describeIn excel Default key method.
 excel.default <- function(x, ...) return(excel(as.data.frame(x), ...))
 
-#' @describeIn excel Export data frame.
+#' @describeIn excel Export data frame to MS Excel.
 excel.data.frame <- function(x, header = TRUE, row.names = FALSE, ...){
    # EXCEL.DATA.FRAME - Send data frame to an Excel spreadsheet.
 
