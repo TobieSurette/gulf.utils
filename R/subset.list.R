@@ -24,6 +24,7 @@ subset.list <- function(x, index, ...){
    index <- rep(TRUE, n)
    if (length(args) > 0){
       for (i in 1:n){ # Loop over list elements.
+         print(args)
          for (j in 1:length(args)){ # Loop arguments for each list element.
             if (!is.null(args[[j]])){
                if (any(names(args[j]) %in% names(x[[i]]))){
