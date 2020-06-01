@@ -2,9 +2,9 @@
 % Please edit documentation in R/file.locate.R
 \name{file.locate}
 \alias{file.locate}
-\title{Find Package Files}
+\title{Find Package Data Files}
 \usage{
-file.locate(pattern, path, package, ...)
+file.locate(pattern, path, package, full.names = TRUE, ...)
 }
 \arguments{
 \item{pattern}{Character string(s) specifying the patterns to search for in the file name.}
@@ -13,13 +13,13 @@ file.locate(pattern, path, package, ...)
 
 \item{package}{Character string specifying the package name.}
 
-\item{full.names}{Whether}
+\item{full.names}{Logical value specifying whether to return the path names along with the file names.}
 }
 \value{
 Character vector.
 }
 \description{
-Searches for the path and name of file.
+Searches for the path(s) and name of package data file(s).
 }
 \examples{
 file.locate(package = "gulf.data", pattern = "species.csv")
