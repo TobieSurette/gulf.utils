@@ -26,7 +26,7 @@ The `describe` function prints a quick summary of the contents of an object to t
 
 ## Function overview:
 
-### Clearing functions:
+### Clean-up functions:
 
 Function | Description
 -------- | --------------------------

@@ -11,7 +11,7 @@
 #'
 #' @seealso \code{\link[base]{subset}}
 #'
-#' @export subset.list
+#' @rawNamespace S3method(subset, list)
 #'
 subset.list <- function(x, index, ...){
    # Subset using 'index' argument:

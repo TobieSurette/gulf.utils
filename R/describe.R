@@ -44,11 +44,11 @@
 #' describe(x)
 #'
 #' @export describe
-#' @export describe.logical
-#' @export describe.numeric
-#' @export describe.character
-#' @export describe.factor
-#' @export describe.data.frame
+#' @rawNamespace S3method(describe, logical)
+#' @rawNamespace S3method(describe, numeric)
+#' @rawNamespace S3method(describe, character)
+#' @rawNamespace S3method(describe, factor)
+#' @rawNamespace S3method(describe, data.frame)
 #'
 describe <- function(x, ...) UseMethod("describe")
 

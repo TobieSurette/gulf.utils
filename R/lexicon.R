@@ -7,8 +7,8 @@
 #' @param ... Further arguments (not used).
 #'
 #' @export lexicon
-#' @export lexicon.default
-#' @export lexicon.character
+#' @rawNamespace S3method(lexicon, default)
+#' @rawNamespace S3method(lexicon, character)
 #'
 lexicon <- function(x, ...) UseMethod("lexicon")
 

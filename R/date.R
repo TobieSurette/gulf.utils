@@ -10,7 +10,7 @@
 #'
 #' @return Generally a \code{POSIXct} or \code{POSIXt} object.
 #'
-#' @seealso \code{\link{time}}
+#' @seealso \code{\link[gulf.utils]{time}}
 #'
 #' @examples
 #' date() # Base method.
@@ -29,9 +29,9 @@
 #' date(x)
 #'
 #' @export date
-#' @export date.default
-#' @export date.character
-#' @export date.data.frame
+#' @rawNamespace S3method(date, default)
+#' @rawNamespace S3method(date, character)
+#' @rawNamespace S3method(date, data.frame)
 #'
 date <- function(x, ...) UseMethod("date")
 

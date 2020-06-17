@@ -34,9 +34,9 @@
 #' time("19h45m01")
 #'
 #' @export time
-#' @export time.default
-#' @export time.character
-#' @export time.data.frame
+#' @rawNamespace S3method(time,default)
+#' @rawNamespace S3method(time,character)
+#' @rawNamespace S3method(time,data.frame)
 #'
 time <- function(x, ...) UseMethod("time")
 

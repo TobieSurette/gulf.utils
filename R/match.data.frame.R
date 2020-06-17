@@ -25,8 +25,8 @@
 #' index <- match(x, y, by = "u")
 #'
 #' @export match
-#' @export match.default
-#' @export match.data.frame
+#' @rawNamespace S3method(match,default)
+#' @rawNamespace S3method(match,data.frame)
 
 match <- function(x, ...) UseMethod("match")
 

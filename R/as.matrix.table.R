@@ -1,6 +1,6 @@
 #' Table to Matrix
 #'
-#' Convert a table object to a matrix.
+#' @description Convert a table object to a matrix.
 #'
 #' @param x A table (see \code{\link[base]{table}}).
 #'
@@ -15,7 +15,7 @@
 #' x <- table(data.frame(a = rpois(100, 5), b = rpois(100, 10)))
 #' as.matrix(x)
 #'
-#' @export as.matrix.table
+#' @rawNamespace S3method(as.matrix, table)
 #'
 
 as.matrix.table <- function(x){

@@ -10,7 +10,7 @@ eps()
 The precision of floating point numbers.
 }
 \description{
-Machine precision
+Returns the machine precision of floating point numbers.
 }
 \examples{
 eps()

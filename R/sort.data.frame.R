@@ -16,7 +16,7 @@
 #' sort(x, by = "v")
 #' sort(x, by = c("u", "v"))  # Sort by both variables.
 #'
-#' @export sort.data.frame
+#' @rawNamespace S3method(sort,data.frame)
 #'
 #' @seealso \code{\link[base]{order}}
 #'

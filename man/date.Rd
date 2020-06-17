@@ -58,5 +58,5 @@ date(x)
 
 }
 \seealso{
-\code{\link{time}}
+\code{\link[gulf.utils]{time}}
 }
