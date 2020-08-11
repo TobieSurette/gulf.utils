@@ -19,8 +19,6 @@
 #' excel(x, header = FALSE)
 #'
 #' @export excel
-#' @rawNamespace S3method(excel, default)
-#' @rawNamespace S3method(excel, data.frame)
 #'
 
 excel <- function(x, ...) UseMethod("excel")

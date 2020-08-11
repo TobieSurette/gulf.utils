@@ -29,7 +29,10 @@
 #'
 #' @seealso \code{\link[base]{difftime}}
 time2unit <- function(x, reference, units, ...){
-   units <- match.arg(tolower(units), c("secs", "mins", "hours", "days"))
+   units <- match.arg(tolower(units), c("secs", "seconds", "mins", "minutes", "hours", "days"))
+   units[units == "seconds"] <- "secs"
+   units[units == "minutes"] <- "mins"
+
    if (!missing(reference)) if (is.numeric(reference)) reference <- as.POSIXct(0, origin = "1970-01-01", tz = "GMT")
    if (!all(class(x) %in% c("POSIXct", "POSIXlt", "POSIXt"))) stop("'x' argument must be a valid R time type.")
 

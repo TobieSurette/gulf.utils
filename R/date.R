@@ -29,9 +29,6 @@
 #' date(x)
 #'
 #' @export date
-#' @rawNamespace S3method(date, default)
-#' @rawNamespace S3method(date, character)
-#' @rawNamespace S3method(date, data.frame)
 #'
 date <- function(x, ...) UseMethod("date")
 
@@ -73,7 +70,7 @@ date.character <- function(x, ...){
 }
 
 #' @describeIn date Extract date from a data frame.
-date.data.frame <- function(x, year, month, day, ...){
+date.data.frame <- function(x, ...){
    names(x) <- tolower(names(x))
 
    # Look for date variable:
@@ -93,7 +90,7 @@ date.data.frame <- function(x, year, month, day, ...){
    datevars <- c(year  = grep("year", names(x))[1],
                  month = grep("month", names(x))[1],
                  day   = grep("day", names(x))[1])
-   if (length(datevars) != 3) stop("Unable to identity date fields.")
+   if (length(datevars) != 3) stop("Unable to locate date fields.")
 
    # Collate and convert date fields:
    year  <- x[, datevars["year"]]
