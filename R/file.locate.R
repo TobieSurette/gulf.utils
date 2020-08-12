@@ -2,7 +2,7 @@
 #'
 #' @description Searches for the path(s) and name of package data file(s).
 #'
-#' @param pattern Character string(s) specifying the patterns to search for in the file name.
+#' @param pattern Character string(s) specifying the patterns, including regular expressions, to search for in the file name.
 #' @param path Character string specifying the file path to search.
 #' @param package Character string specifying the package name.
 #' @param full.names Logical value specifying whether to return the path names along with the file names.
@@ -13,9 +13,11 @@
 #'
 #' @return Character vector.
 #'
+#' @seealso \code{\link[base]{grep}}
+#'
 #' @export file.locate
 #'
-file.locate <- function(pattern, path, package, full.names = TRUE, ...){
+file.locate <- function(pattern, path, repository, package, keywords, full.names = TRUE, ...){
    # Define search paths:
    if (missing(path) & missing(package)) path <- getwd()
    if (missing(path) & !missing(package)) path <- find.package(package = package)
@@ -34,7 +36,16 @@ file.locate <- function(pattern, path, package, full.names = TRUE, ...){
    f <- data.frame(path = paths, file = files, stringsAsFactors = FALSE)
 
    # Match pattern:
-   if (!missing(pattern)) if (length(pattern) > 0) for (i in 1:length(pattern)) f <- f[grep(pattern[i], f$file), ]
+   if (!missing(pattern)){
+      pattern <- tolower(pattern)
+      if (length(pattern) > 0) for (i in 1:length(pattern)) f <- f[grep(pattern[i], tolower(f$file)), ]
+   }
+
+   # Match keywords:
+   if (!missing(keywords)){
+      keywords <- tolower(keywords)
+      if (length(keywords) > 0) for (i in 1:length(keywords)) f <- f[grep(keywords[i], tolower(f$path)), ]
+   }
 
    if (full.names) return(f$path) else return(f$file)
 }
