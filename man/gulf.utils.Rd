@@ -7,7 +7,7 @@
 \description{
 A package of basic utility functions for use in the southern Gulf of Saint Lawrence fisheries' science.
 }
-\section{\code{gulf.utils} Functions and Methods}{
+\section{Functions and Methods}{
 
 \describe{
    \item{\code{\link{date}}}{Date formatting functions.}

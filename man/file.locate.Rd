@@ -4,10 +4,10 @@
 \alias{file.locate}
 \title{Find Package Data Files}
 \usage{
-file.locate(pattern, path, package, full.names = TRUE, ...)
+file.locate(pattern, path, package, keywords, full.names = TRUE, ...)
 }
 \arguments{
-\item{pattern}{Character string(s) specifying the patterns to search for in the file name.}
+\item{pattern}{Character string(s) specifying the patterns, including regular expressions, to search for in the file name.}
 
 \item{path}{Character string specifying the file path to search.}
 
@@ -25,4 +25,7 @@ Searches for the path(s) and name of package data file(s).
 file.locate(package = "gulf.data", pattern = "species.csv")
 file.locate(package = "gulf.data", pattern = "*.csv")
 
+}
+\seealso{
+\code{\link[base]{grep}}
 }

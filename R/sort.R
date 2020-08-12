@@ -20,14 +20,13 @@
 #'
 #' @export sort
 #'
-#'
 sort <- function(x, ...) UseMethod("sort")
 
-#' @describeIn sort.data.frame Default sort method, see \code{\link[base]{sort}}.
+#' @describeIn sort Default sort method, see \code{\link[base]{sort}}.
 sort.default <- function(x, ...) return(base::sort(x, ...))
 
-#' @describeIn sort.data.frame Sort a data frame.
-sort.data.frame <- function(x, by, increasing = TRUE){
+#' @describeIn sort Sort a data frame.
+sort.data.frame <- function(x, by, increasing = TRUE, ...){
    # Define 'by':
    if (missing(by)) if (attr(x, "key")) by <- key(x) else by <- names(x)
 

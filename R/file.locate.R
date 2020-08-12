@@ -17,16 +17,23 @@
 #'
 #' @export file.locate
 #'
-file.locate <- function(pattern, path, repository, package, keywords, full.names = TRUE, ...){
+file.locate <- function(pattern, path, package, keywords, full.names = TRUE, ...){
    # Define search paths:
-   if (missing(path) & missing(package)) path <- getwd()
+   if (missing(path) & missing(package))  path <- getwd()
    if (missing(path) & !missing(package)) path <- find.package(package = package)
    if (missing(path) & missing(pattern)) return(NULL)
    paths <- dir(path = path, recursive = TRUE, full.names = TRUE, all.files = TRUE)
 
-   # Only look in package data:
+   # Only look in package data paths:
    if (!missing(package)) paths <- paths[unique(c(grep("/data", paths), grep("/extdata", paths)))]
 
+   # Match pattern:
+   if ((length(paths) > 0) & !missing(keywords)){
+      keywords <- tolower(keywords)
+      if (length(keywords) > 0) for (i in 1:length(keywords)) paths <- paths[grep(keywords[i], tolower(paths)) ]
+   }
+
+   # Path check:
    if (length(paths) == 0) return(NULL)
 
    # Extract file list:
@@ -39,12 +46,6 @@ file.locate <- function(pattern, path, repository, package, keywords, full.names
    if (!missing(pattern)){
       pattern <- tolower(pattern)
       if (length(pattern) > 0) for (i in 1:length(pattern)) f <- f[grep(pattern[i], tolower(f$file)), ]
-   }
-
-   # Match keywords:
-   if (!missing(keywords)){
-      keywords <- tolower(keywords)
-      if (length(keywords) > 0) for (i in 1:length(keywords)) f <- f[grep(keywords[i], tolower(f$path)), ]
    }
 
    if (full.names) return(f$path) else return(f$file)

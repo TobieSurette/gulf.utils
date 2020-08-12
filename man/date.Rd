@@ -13,7 +13,7 @@ date(x, ...)
 
 \method{date}{character}(x, ...)
 
-\method{date}{data.frame}(x, year, month, day, ...)
+\method{date}{data.frame}(x, ...)
 }
 \arguments{
 \item{x}{Object.}
