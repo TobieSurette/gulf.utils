@@ -43,20 +43,23 @@
 #'                stringsAsFactors = FALSE)
 #' describe(x)
 #'
-#' @export describe
+#' @export
 #'
 describe <- function(x, ...) UseMethod("describe")
 
 #' @describeIn describe NULL method.
+#' @export
 describe.NULL <- function(x, ...) return("NULL")
 
 #' @describeIn describe Summary contents of a logical vector.
+#' @export
 describe.logical <- function(x, ...){
    ux <- sort(unique(x[!is.na(x)]))
    return(paste0("{", paste0(ux, collapse = ", "), "}"))
 }
 
 #' @describeIn describe Summary contents of a numeric vector.
+#' @export
 describe.numeric <- function(x, digits = 3, max = 10, sep = "-", ...){
    ux <- sort(unique(x[!is.na(x)]))
    if (length(ux) == 0) return("{}")
@@ -93,6 +96,7 @@ describe.numeric <- function(x, digits = 3, max = 10, sep = "-", ...){
 }
 
 #' @describeIn describe Summary contents of a character vector.
+#' @export
 describe.character <- function(x, max = 10, sep = "', '", ...){
    ux <- sort(unique(x[!is.na(x) & (x != "")]))
    if (length(ux) > max){
@@ -108,6 +112,7 @@ describe.character <- function(x, max = 10, sep = "', '", ...){
 }
 
 #' @describeIn describe Summary contents of a factor.
+#' @export
 describe.factor <- function(x, max = 10, sep = ", ", ...){
    ux <- sort(unique(x[!is.na(x)]))
    if (length(ux) > max){
@@ -123,6 +128,7 @@ describe.factor <- function(x, max = 10, sep = ", ", ...){
 }
 
 #' @describeIn describe Summary contents of a data frame.
+#' @export
 describe.data.frame <- function(x, indent = 3, drop = FALSE, ...){
    cat("\n")
    cat(paste(paste(dim(x), collapse = " x "), "data frame:\n"))
