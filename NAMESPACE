@@ -2,6 +2,12 @@
 
 S3method(as.matrix, table)
 
+S3method(describe,"NULL")
+S3method(describe,character)
+S3method(describe,data.frame)
+S3method(describe,factor)
+S3method(describe,logical)
+S3method(describe,numeric)
 S3method(subset,list)
 export("pretty.log")
 export(clc)
