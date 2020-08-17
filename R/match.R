@@ -23,15 +23,16 @@
 #'
 #' # Get the list of indices matching the rows "u" of 'x' to 'y':
 #' index <- match(x, y, by = "u")
-#'
-#' @export match
 
+#' @export match
 match <- function(x, ...) UseMethod("match")
 
 #' @describeIn match Default match method, see \code{\link[base]{match}}.
+#' @export
 match.default <- function(x, ...) return(base::match(x, ...))
 
 #' @describeIn match Match rows between two data frames.
+#' @export
 match.data.frame <- function(x, y, by = base::intersect(names(x), names(y)), ...){
    # Check 'by' argument:
    if (length(by) == 0) stop("There must be at least one common variable for the match to be performed.")

@@ -14,13 +14,12 @@
 #' @return Character vector.
 #'
 #' @seealso \code{\link[base]{grep}}
-#'
+
 #' @export locate
-#'
-#'
 locate <- function(x, ...) UseMethod("locate")
 
 #' @describeIn locate Default function to locate data files.
+#' @export
 locate.default <- function(x, pattern, path, package, keywords, full.names = TRUE, ...){
    # Define search paths:
    if (missing(path) & missing(package))  path <- getwd()

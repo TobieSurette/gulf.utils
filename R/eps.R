@@ -7,7 +7,6 @@
 #' @examples
 #' eps()
 #'
-#' @export eps
-#'
 
+#' @export eps
 eps <- function() .Machine$double.eps

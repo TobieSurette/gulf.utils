@@ -16,10 +16,12 @@ clc()
 \item{x}{Graphic handle(s)}
 }
 \description{
-Clears all graphics windows.
+Functions to clear or erase items.
 }
 \section{Functions}{
 \itemize{
+\item \code{clg}: Clear graphics windows.
+
 \item \code{clm}: Clear all variables from memory.
 
 \item \code{clc}: Clear the R console.

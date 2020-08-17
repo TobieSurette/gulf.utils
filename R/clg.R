@@ -1,6 +1,6 @@
 #' Clear
 #'
-#' @description Clears all graphics windows.
+#' @description Functions to clear or erase items.
 #'
 #' @param x Graphic handle(s)
 #'
@@ -20,6 +20,7 @@
 #' @export clc
 #'
 
+#' @describeIn clear Clear graphics windows.
 clg <- function(x){
    if (missing(x))
       grDevices::graphics.off()
@@ -36,8 +37,8 @@ clg <- function(x){
    }
 }
 
-#' @describeIn clg Clear all variables from memory.
+#' @describeIn clear Clear all variables from memory.
 clm <- function() rm(list = ls(envir = globalenv()), envir = globalenv())
 
-#' @describeIn clg Clear the R console.
+#' @describeIn clear Clear the R console.
 clc <- function() cat("\014")

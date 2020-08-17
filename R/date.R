@@ -28,11 +28,11 @@
 #' x <- data.frame(Year = 2000, Month = 01, Day = 1:30)
 #' date(x)
 #'
-#' @export date
-#'
+#' @export
 date <- function(x, ...) UseMethod("date")
 
 #' @describeIn date Default date method.
+#' @export
 date.default <- function(x, year, month, day, ...){
    if (!missing(x)) if (length(x) > 0) return(date(as.character(x)))
    if (missing(year) | missing(month) | missing(day)) return(base::date())
@@ -49,6 +49,7 @@ date.default <- function(x, year, month, day, ...){
 }
 
 #' @describeIn date Convert character string to date.
+#' @export
 date.character <- function(x, ...){
    x <- gsub("^ ", "", x)
    x <- gsub(" $", "", x)
@@ -70,6 +71,7 @@ date.character <- function(x, ...){
 }
 
 #' @describeIn date Extract date from a data frame.
+#' @export
 date.data.frame <- function(x, ...){
    names(x) <- tolower(names(x))
 

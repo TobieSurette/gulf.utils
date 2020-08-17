@@ -11,5 +11,4 @@
 #' is.installed(c("base", "splines"))
 #'
 #' @export is.installed
-#'
 is.installed <- function(package.name) is.element(package.name, utils::installed.packages()[,1])

@@ -44,18 +44,17 @@
 #' describe(x)
 #'
 #' @export
-#'
 describe <- function(x, ...) UseMethod("describe")
 
-#' @describeIn describe NULL method.
+#' describeIn describe NULL method.
 #' @export
 describe.NULL <- function(x, ...) return("NULL")
 
 #' @describeIn describe Summary contents of a logical vector.
 #' @export
 describe.logical <- function(x, ...){
-   ux <- sort(unique(x[!is.na(x)]))
-   return(paste0("{", paste0(ux, collapse = ", "), "}"))
+   ux <- base::sort(base::unique(x[!is.na(x)]))
+   return(base::paste0("{", base::paste0(ux, collapse = ", "), "}"))
 }
 
 #' @describeIn describe Summary contents of a numeric vector.
@@ -162,4 +161,3 @@ describe.data.frame <- function(x, indent = 3, drop = FALSE, ...){
    }
    cat("\n")
 }
-

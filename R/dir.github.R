@@ -11,8 +11,6 @@
 #' @return Character vector of files and directories.
 #'
 #' @export dir.github
-#'
-
 dir.github <- function(username, repository){
    http <- paste0("https://api.github.com/repos/", username, "/", repository, "/git/trees/master?recursive=1")
    req <- httr::GET(http)

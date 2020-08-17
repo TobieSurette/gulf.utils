@@ -9,7 +9,6 @@
 #' print(deblank(x))
 #'
 #' @export deblank
-#'
 deblank <- function(x){
    x <- gsub("^[ \t\r\n]+", "", x, perl = TRUE)
    x <- gsub("[ \t\r\n]+$", "", x, perl = TRUE)

@@ -16,8 +16,6 @@
 #'   repvec(1:10, ncol = 12)    # 10x12 matrix with 1:10 in each column.
 #'
 #' @export repvec
-#'
-
 repvec <- function(x, n = 1, dim = NULL, nrow = NULL, ncol = NULL){
    if ((is.null(dim)) & (is.null(nrow)) & (is.null(ncol))){
       # Only n is specified:

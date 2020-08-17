@@ -12,7 +12,6 @@
 #' @seealso \code{\link[base]{subset}}
 #'
 #' @export
-#'
 subset.list <- function(x, index, ...){
    # Subset using 'index' argument:
    if (!missing(index)) x <- x[index]

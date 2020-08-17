@@ -34,10 +34,10 @@
 #' time("19h45m01")
 #'
 #' @export time
-#'
 time <- function(x, ...) UseMethod("time")
 
 #' @describeIn time Default time method.
+#' @export
 time.default <- function(x, date, time, year, month, day, hour = 0, minute = 0, second = 0, ...){
    if (missing(x) & missing(hour) & missing(time)) return(Sys.time())
    if (!missing(x)) return(stats::time(x, ...))
@@ -49,9 +49,11 @@ time.default <- function(x, date, time, year, month, day, hour = 0, minute = 0, 
 }
 
 #' @describeIn time Convert time from logical value.
+#' @export
 time.logical <- function(x) return(time(as.numeric(x)))
 
 #' @describeIn time Convert time from numeric value.
+#' @export
 time.numeric <- function(x){
    hour <- floor(x)
    hour[(hour < 0) & (hour > 24)] <- NA
@@ -67,6 +69,7 @@ time.numeric <- function(x){
 }
 
 #' @describeIn time Convert time from character string.
+#' @export
 time.character <- function(x){
    # Initialize variables:
    hour <- rep(NA, length(x))
@@ -129,6 +132,7 @@ time.character <- function(x){
 }
 
 #' @describeIn time Extract time from data frame.
+#' @export
 time.data.frame <- function(x, ...){
    if (nrow(x) == 0) return(NULL)
    v <- NULL  # Init result variable.

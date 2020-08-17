@@ -12,10 +12,10 @@
 #'    for (i in 1:1000000) x <- i
 #' toc()
 #'
-#' @export tic
 #' @export toc
 
-#' @describeIn tic Start timer.
+#' @describeIn tictoc Start timer.
+#' @export tic
 tic <- function(gcFirst = TRUE){
    assign(".type", "elapsed", envir = baseenv())
    if (gcFirst) gc(FALSE)
@@ -24,7 +24,8 @@ tic <- function(gcFirst = TRUE){
    invisible(tic)
 }
 
-#' @describeIn tic Stop timer and report elapsed time.
+#' @describeIn tictoc Stop timer and report elapsed time.
+#' @export toc
 toc <- function(){
    type <- get(".type", envir = baseenv())
    toc <- proc.time()[type]
