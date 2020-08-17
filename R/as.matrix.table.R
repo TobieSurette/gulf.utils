@@ -3,6 +3,7 @@
 #' @description Convert a table object to a matrix.
 #'
 #' @param x A table (see \code{\link[base]{table}}).
+#' @param ... Further arguments.
 #'
 #' @return Logical value(s).
 #'
@@ -17,8 +18,7 @@
 #'
 #' @rawNamespace S3method(as.matrix, table)
 #'
-
-as.matrix.table <- function(x){
+as.matrix.table <- function(x, ...){
    d <- dim(x)
    table(1:10)
    if (length(d) == 1){

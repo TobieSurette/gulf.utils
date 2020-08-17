@@ -1,6 +1,6 @@
 #' Sort Data Frame
 #'
-#' @description Sorts a dta frame by one or more columns.
+#' @description Sorts a data frame by one or more columns.
 #'
 #' @param x Data frame.
 #' @param by Field variable names or column indices by which to sort a data frame.
@@ -30,7 +30,6 @@ sort.data.frame <- function(x, by, increasing = TRUE, ...){
    # Define 'by':
    if (missing(by)) if (attr(x, "key")) by <- key(x) else by <- names(x)
 
-   print(123)
    # Check if all variables are in the target object.
    if (!all(by %in% names(x))) stop("Some column names are not in target object.")
 

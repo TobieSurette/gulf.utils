@@ -14,8 +14,8 @@
 #' # Generate exponential breakpoints for random numbers:
 #' pretty.log(runif(100)*100)
 #'
-#' @export pretty.log
-
+#' @export "pretty.log"
+#'
 pretty.log <- function(x, base, n = 5, ...){
    # Expand 'x' if it is too short:
    if (length(x) < 10) x <- seq(min(x), max(x), len = 10)

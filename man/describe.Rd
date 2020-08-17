@@ -2,6 +2,7 @@
 % Please edit documentation in R/describe.R
 \name{describe}
 \alias{describe}
+\alias{describe.NULL}
 \alias{describe.logical}
 \alias{describe.numeric}
 \alias{describe.character}
@@ -10,6 +11,8 @@
 \title{Describe Contents}
 \usage{
 describe(x, ...)
+
+\method{describe}{`NULL`}(x, ...)
 
 \method{describe}{logical}(x, ...)
 
@@ -44,6 +47,8 @@ values are also shown, along with the contents of each variable field.
 }
 \section{Methods (by class)}{
 \itemize{
+\item \code{NULL}: NULL method.
+
 \item \code{logical}: Summary contents of a logical vector.
 
 \item \code{numeric}: Summary contents of a numeric vector.

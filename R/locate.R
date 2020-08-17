@@ -1,4 +1,4 @@
-#' Find Package Data Files
+#' Find Data Files
 #'
 #' @description Searches for the path(s) and name of package data file(s).
 #'
@@ -8,16 +8,20 @@
 #' @param full.names Logical value specifying whether to return the path names along with the file names.
 #'
 #' @examples
-#' file.locate(package = "gulf.data", pattern = "species.csv")
-#' file.locate(package = "gulf.data", pattern = "*.csv")
+#' locate(package = "gulf.data", pattern = "species.csv")
+#' locate(package = "gulf.data", pattern = "*.csv")
 #'
 #' @return Character vector.
 #'
 #' @seealso \code{\link[base]{grep}}
 #'
-#' @export file.locate
+#' @export locate
 #'
-file.locate <- function(pattern, path, package, keywords, full.names = TRUE, ...){
+#'
+locate <- function(x, ...) UseMethod("locate")
+
+#' @describeIn locate Default function to locate data files.
+locate.default <- function(x, pattern, path, package, keywords, full.names = TRUE, ...){
    # Define search paths:
    if (missing(path) & missing(package))  path <- getwd()
    if (missing(path) & !missing(package)) path <- find.package(package = package)

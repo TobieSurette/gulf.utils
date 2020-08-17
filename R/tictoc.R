@@ -2,7 +2,9 @@
 #'
 #' @description Calculates elapsed time between calls to \code{tic} and \code{toc}.
 #'
-#' @aliases tic toc
+#' @aliases tic
+#' @aliases toc
+#'
 #' @param gcFirst Logical value.
 #'
 #' @examples

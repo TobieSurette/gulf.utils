@@ -4,10 +4,12 @@
 \alias{as.matrix.table}
 \title{Table to Matrix}
 \usage{
-\method{as.matrix}{table}(x)
+\method{as.matrix}{table}(x, ...)
 }
 \arguments{
 \item{x}{A table (see \code{\link[base]{table}}).}
+
+\item{...}{Further arguments.}
 }
 \value{
 Logical value(s).

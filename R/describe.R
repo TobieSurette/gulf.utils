@@ -47,6 +47,9 @@
 #'
 describe <- function(x, ...) UseMethod("describe")
 
+#' @describeIn describe NULL method.
+describe.NULL <- function(x, ...) return("NULL")
+
 #' @describeIn describe Summary contents of a logical vector.
 describe.logical <- function(x, ...){
    ux <- sort(unique(x[!is.na(x)]))
