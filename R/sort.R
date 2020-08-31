@@ -18,9 +18,6 @@
 #'
 #' @seealso \code{\link[base]{order}}
 #'
-#' @describeIn sort Default sort method, see \code{\link[base]{sort}}.
-#' @export
-sort.default <- function(x, ...) return(base::sort.default(x, ...))
 
 #' @describeIn sort Sort a data frame.
 #' @export
