@@ -1,5 +1,7 @@
 #' Time Extraction and Conversion
 #'
+#' @name time
+#'
 #' @description These are convenience functions to extract a time field from an object, such as a character
 #' string or a data frame.
 #'
@@ -151,3 +153,13 @@ time.data.frame <- function(x, ...){
    if (is.null(v)) stop("Unable to convert time fields.")
    return(v)
 }
+
+#' @rdname time
+#' @export start.time
+start.time <- function(x, ...) UseMethod("start.time")
+
+#' @rdname time
+#' @export end.time
+end.time <- function(x, ...) UseMethod("end.time")
+
+
