@@ -1,5 +1,7 @@
 #' Date Extraction and Conversion
 #'
+#' @name date
+#'
 #' @description These are wrapper functions to extract a date field from an object, such as a character
 #' string or a data frame.
 #'

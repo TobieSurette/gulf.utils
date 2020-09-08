@@ -1,5 +1,7 @@
 #' Sort Data Frame
 #'
+#' @name sort
+#'
 #' @description Sorts a data frame by one or more columns.
 #'
 #' @param x Data frame.
@@ -19,7 +21,7 @@
 #' @seealso \code{\link[base]{order}}
 #'
 
-#' @describeIn sort Sort a data frame.
+#' @rdname sort
 #' @export
 sort.data.frame <- function(x, by, increasing = TRUE, ...){
    # Define 'by':

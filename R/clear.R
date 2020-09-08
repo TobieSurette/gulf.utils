@@ -1,5 +1,7 @@
 #' Clear
 #'
+#' @name clear
+#'
 #' @description Functions to clear or erase items.
 #'
 #' @param x Graphic handle(s)
@@ -15,12 +17,13 @@
 #' # Clear R console:
 #' clc()
 #'
-#' @export clg
-#' @export clm
-#' @export clc
-#'
 
-#' @describeIn clear Clear graphics windows.
+#Clear graphics windows.
+#Clear all variables from memory.
+#Clear the R console.
+
+#' @rdname clear
+#' @export clg
 clg <- function(x){
    if (missing(x))
       grDevices::graphics.off()
@@ -37,8 +40,10 @@ clg <- function(x){
    }
 }
 
-#' @describeIn clear Clear all variables from memory.
+#' @rdname clear
+#' @export clm
 clm <- function() rm(list = ls(envir = globalenv()), envir = globalenv())
 
-#' @describeIn clear Clear the R console.
+#' @rdname clear
+#' @export clc
 clc <- function() cat("\014")

@@ -1,5 +1,7 @@
 #' Relative Time Conversion
 #'
+#' @name time2unit
+#'
 #' @description Calculate time difference relative to a specified reference time.
 #'
 #' @param x Time variable.

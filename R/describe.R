@@ -46,7 +46,7 @@
 #' @export
 describe <- function(x, ...) UseMethod("describe")
 
-#' describeIn describe NULL method.
+#' @describeIn describe NULL method.
 #' @export
 describe.NULL <- function(x, ...) return("NULL")
 
