@@ -2,7 +2,7 @@
 % Please edit documentation in R/deflate.R
 \name{deflate}
 \alias{deflate}
-\title{Deflate or Inflate}
+\title{Deflate, Inflate and Expand}
 \usage{
 deflate(x, ...)
 }
@@ -10,15 +10,17 @@ deflate(x, ...)
 \item{x}{Object, usually some type of data frame.}
 }
 \description{
-Inflate and deflate objects.
+Inflate and deflate data objects.
 }
 \section{Functions}{
 
 \describe{
    \item{\code{deflate}}{Generic \code{deflate} method.}
    \item{\code{inflate}}{Generic \code{inflate} method.}
+   \item{\code{expand}}{Generic \code{expand} method.}
    \item{\code{deflate.data.frame}}{Collapse columns with only single unique entries and store as object attributes.}
    \item{\code{inflate.data.frame}}{Expand object attributes and store as data columns.}
+   \item{\code{expand.data.frame}}{Expand object attributes and store as data columns.}
 }
 }
 
@@ -31,5 +33,9 @@ print(x)
 attributes(x)
 x <- inflate(x)
 print(x)
+
+attr(x, "status") <- "critical"
+expand(x)
+attr(x, "units") <- c(length = "millimeters", weight = "grams")
 
 }
