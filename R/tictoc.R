@@ -1,9 +1,8 @@
 #' Calculate elapsed time
 #'
-#' @description Calculates elapsed time between calls to \code{tic} and \code{toc}.
+#' @name tictoc
 #'
-#' @aliases tic
-#' @aliases toc
+#' @description Calculates elapsed time between calls to \code{tic} and \code{toc}.
 #'
 #' @param gcFirst Logical value.
 #'
@@ -12,9 +11,13 @@
 #'    for (i in 1:1000000) x <- i
 #' toc()
 #'
-#' @export toc
+#' @section Functions:
+#' \describe{
+#'    \item{\code{tic}}{Start timer.}
+#'    \item{\code{toc}}{Stop timer and report elapsed time.}
+#' }
 
-#' @describeIn tictoc Start timer.
+#' @rdname tictoc
 #' @export tic
 tic <- function(gcFirst = TRUE){
    assign(".type", "elapsed", envir = baseenv())
@@ -24,7 +27,7 @@ tic <- function(gcFirst = TRUE){
    invisible(tic)
 }
 
-#' @describeIn tictoc Stop timer and report elapsed time.
+#' @rdname tictoc
 #' @export toc
 toc <- function(){
    type <- get(".type", envir = baseenv())

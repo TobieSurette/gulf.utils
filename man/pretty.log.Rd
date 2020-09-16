@@ -23,5 +23,4 @@ pretty.log(0:10)
 
 # Generate exponential breakpoints for random numbers:
 pretty.log(runif(100)*100)
-
 }

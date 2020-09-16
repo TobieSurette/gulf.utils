@@ -19,6 +19,15 @@ clc()
 \description{
 Functions to clear or erase items.
 }
+\section{Functions}{
+
+\describe{
+   \item{\code{clg}}{Clear graphics windows.}
+   \item{\code{clm}}{Clear all variables from memory.}
+   \item{\code{clc}}{Clear the R console.}
+}
+}
+
 \examples{
 # Clear graphics:
 clg()

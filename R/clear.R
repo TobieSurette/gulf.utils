@@ -17,10 +17,12 @@
 #' # Clear R console:
 #' clc()
 #'
-
-#Clear graphics windows.
-#Clear all variables from memory.
-#Clear the R console.
+#' @section Functions:
+#' \describe{
+#'    \item{\code{clg}}{Clear graphics windows.}
+#'    \item{\code{clm}}{Clear all variables from memory.}
+#'    \item{\code{clc}}{Clear the R console.}
+#' }
 
 #' @rdname clear
 #' @export clg

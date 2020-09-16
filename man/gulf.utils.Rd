@@ -16,9 +16,9 @@ A package of basic utility functions for use in the southern Gulf of Saint Lawre
    \item{\code{\link{dir.github}}}{Return file contents of a GitHub repository.}
    \item{\code{\link{eps}}}{Return machine floating point precision.}
    \item{\code{\link{excel}}}{Output data in MS Excel.}
-   \item{\code{\link{file.locate}}}{Look up data files in R packages.}
    \item{\code{\link{is.installed}}}{Check if R package is installed.}
    \item{\code{\link{lexicon}}}{Return word content in text or data.}
+   \item{\code{\link{locate}}}{Search for data files.}
    \item{\code{\link{match}}}{Find matching rows between data frames.}
    \item{\code{\link{matrix2xyz}}}{Matrix to XYZ format conversion functions.}
    \item{\code{\link{pretty.log}}}{Returns a pretty log-scale which spans numeric data.}
