@@ -7,8 +7,6 @@
 \alias{time.numeric}
 \alias{time.character}
 \alias{time.data.frame}
-\alias{start.time}
-\alias{end.time}
 \title{Time Extraction and Conversion}
 \usage{
 time(x, ...)
@@ -22,10 +20,6 @@ time(x, ...)
 \method{time}{character}(x)
 
 \method{time}{data.frame}(x, ...)
-
-start.time(x, ...)
-
-end.time(x, ...)
 }
 \arguments{
 \item{x}{Object.}

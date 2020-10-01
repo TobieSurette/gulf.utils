@@ -153,13 +153,3 @@ time.data.frame <- function(x, ...){
    if (is.null(v)) stop("Unable to convert time fields.")
    return(v)
 }
-
-#' @rdname time
-#' @export start.time
-start.time <- function(x, ...) UseMethod("start.time")
-
-#' @rdname time
-#' @export end.time
-end.time <- function(x, ...) UseMethod("end.time")
-
-

@@ -49,7 +49,7 @@ time2unit <- function(x, reference, units, ...){
 time2sec <- function(x, ...) return(time2unit(x, units = "secs", ...))
 
 #' @describeIn time2unit Calculate time difference in \bold{minutes}.
-time2min <- function(x, ...) return(time2unit(x, units = "secs", ...))
+time2min <- function(x, ...) return(time2unit(x, units = "mins", ...))
 
 #' @describeIn time2unit Calculate time difference in \bold{hours}.
 time2hour <- function(x, ...) return(time2unit(x, units = "hours", ...))
