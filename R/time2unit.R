@@ -42,7 +42,11 @@ time2unit <- function(x, reference, units, ...){
    if (missing(reference)) reference <- min(x, na.rm = TRUE)
 
    # Calculate time difference:
-   return(as.numeric(difftime(x, reference, units = units)))
+   n <- names(x)
+   v <- as.numeric(difftime(x, reference, units = units))
+   names(v) <- n
+
+   return(v)
 }
 
 #' @describeIn time2unit Calculate time difference in \bold{seconds}.
