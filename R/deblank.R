@@ -1,6 +1,6 @@
 #' Remove Leading and Trailing Spaces
 #'
-#' @description Removes leading and trailing spaces from a character string(s).
+#' @description Removes leading and trailing spaces from character strings.
 #'
 #' @param x Character string(s).
 #'

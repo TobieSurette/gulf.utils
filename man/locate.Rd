@@ -7,10 +7,10 @@
 \usage{
 locate(x, ...)
 
-\method{locate}{default}(x, pattern, path, package, keywords, full.names = TRUE, ...)
+\method{locate}{default}(x, file, path, package, keywords, full.names = TRUE, ...)
 }
 \arguments{
-\item{pattern}{Character string(s) specifying the patterns, including regular expressions, to search for in the file name.}
+\item{file}{Character string(s) specifying the files, including regular expressions, to search for in the file name.}
 
 \item{path}{Character string specifying the file path to search.}
 
@@ -30,8 +30,8 @@ Searches for the path(s) and name of package data file(s).
 }}
 
 \examples{
-locate(package = "gulf.data", pattern = "species.csv")
-locate(package = "gulf.data", pattern = "*.csv")
+locate(package = "gulf.data", file = "species.csv")
+locate(package = "gulf.data", file = "*.csv")
 
 }
 \seealso{
