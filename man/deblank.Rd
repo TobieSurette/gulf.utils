@@ -10,7 +10,7 @@ deblank(x)
 \item{x}{Character string(s).}
 }
 \description{
-Removes leading and trailing spaces from a character string(s).
+Removes leading and trailing spaces from character strings.
 }
 \examples{
 x <- "  Why hello there. "
