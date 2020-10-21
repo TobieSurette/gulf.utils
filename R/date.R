@@ -103,7 +103,7 @@ date.data.frame <- function(x, ...){
    v <- rep(ISOdate(NA, NA, NA, tz = ""), nrow(x))
    index <- which(!is.na(year) & !is.na(month) & !is.na(day))
 
-   if (length(index) > 0) v[index] <- as.POSIXct(paste0(formatC(year[index]), "-", month[index], "-", day[index]), tz = "GMT")
+   if (length(index) > 0) v[index] <- as.POSIXct(paste0(formatC(year[index]), "-", month[index], "-", day[index]), tz = "")
 
    return(v)
 }

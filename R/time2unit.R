@@ -35,7 +35,7 @@ time2unit <- function(x, reference, units, ...){
    units[units == "seconds"] <- "secs"
    units[units == "minutes"] <- "mins"
 
-   if (!missing(reference)) if (is.numeric(reference)) reference <- as.POSIXct(0, origin = "1970-01-01", tz = "GMT")
+   if (!missing(reference)) if (is.numeric(reference)) reference <- date("1970-01-01")
    if (!all(class(x) %in% c("POSIXct", "POSIXlt", "POSIXt"))) stop("'x' argument must be a valid R time type.")
 
    # Define reference time as the earliest time:
@@ -62,7 +62,7 @@ time2hour <- function(x, ...) return(time2unit(x, units = "hours", ...))
 time2day <- function(x, ...) return(time2unit(x, units = "days", ...))
 
 #' @describeIn time2unit Calculate Julian day, i.e. the day of the year relative to January 1st.
-julian <- function(x) return(time2day(x, paste0(as.numeric(substr(as.character(x), 1, 4)), "-01-01")) + 1)
+julian <- function(x) return(round(time2day(x, paste0(as.numeric(substr(as.character(x), 1, 4)), "-01-01")) + 1))
 
 #' @describeIn time2unit Calculate to in which \bold{week} of the year a date fall into.
 week <- function(x, reference = "Sunday"){
