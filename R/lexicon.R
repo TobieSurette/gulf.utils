@@ -16,4 +16,4 @@ lexicon.default <- function(x, file, ...) if (!missing(file)) return(lexicon(rea
 
 #' @describeIn lexicon Returns a character vector of component words.
 #' @export
-lexicon.character <- function(x, ...) return(unique(unlist(strsplit(x, "[ ();]"))))
+lexicon.character <- function(x, ...) return(unique(unlist(strsplit(x, "[ .:();]"))))
