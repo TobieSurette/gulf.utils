@@ -4,7 +4,7 @@
 \alias{lexicon}
 \alias{lexicon.default}
 \alias{lexicon.character}
-\title{Build Lexicon}
+\title{Extract Lexicon}
 \usage{
 lexicon(x, ...)
 
@@ -20,7 +20,7 @@ lexicon(x, ...)
 \item{file}{Character vector specifying a file to be read.}
 }
 \description{
-Returns the different words used in a an object with text.
+Returns the different words used in a an object within text.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -29,3 +29,6 @@ Returns the different words used in a an object with text.
 \item \code{character}: Returns a character vector of component words.
 }}
 
+\examples{
+lexicon("The punctuation, in this phrase; is ... really: 'terrible'.")
+}
