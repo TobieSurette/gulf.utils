@@ -1,10 +1,13 @@
 #' Translate Words
 #'
 #' @description Functions for translating common fishery and biological words and terms. These
-#'              functions are not intended for transl
+#'              functions are intended for translating words and common short phrases only.
+#'
+#' @param x Character string(s).
+#' @param plural Logical value specifying whether the plural form of a word is to be imposed.
+#' @param feminine Logical value specifying whether the feminine form of a word is to be imposed.
 #'
 #' @examples
-#'
 #' en2fr("male")
 #' en2fr("crab")
 #' en2fr("black")
@@ -12,8 +15,9 @@
 #' en2fr("fishing grids")
 #' en2fr("survey")
 
+#' @describeIn translate Translate from english to french.
 #' @export
-en2fr <- function(x, plural = FALSE, feminin = FALSE){
+en2fr <- function(x, plural = FALSE, feminine = FALSE){
    # General:
    x <- gsub("crabs", "crabes", x)
    x <- gsub("crab", "crabe", x)
