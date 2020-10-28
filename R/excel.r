@@ -19,30 +19,29 @@
 #' excel(x, header = FALSE)
 #'
 
-#' @export excel
+#' @export
 excel <- function(x, ...) UseMethod("excel")
 
-#' @describeIn excel Default key method.
+#' @describeIn excel Default 'excel' method.
 #' @export
 excel.default <- function(x, ...) return(excel(as.data.frame(x), ...))
 
 #' @describeIn excel Export data frame to MS Excel.
 #' @export
 excel.data.frame <- function(x, header = TRUE, row.names = FALSE, ...){
-   # EXCEL.DATA.FRAME - Send data frame to an Excel spreadsheet.
-
    # Define temporary file name:
-   file <- paste(base::tempfile(tmpdir = base::tempdir()), ".txt", sep = "")
+   file <- paste(tempfile(tmpdir = tempdir()), ".txt", sep = "")
 
    # Write data frame 'x':
    utils::write.table(x, sep = "\t", file = file, col.names = header, row.names = row.names, ...)
 
    # Call Excel:
    if (.Platform$OS.type == "unix") command <- paste0("open ", file, ' -a "Microsoft Excel"')
-   if (.Platform$OS.type != "unix") command <- paste0("start excel ", file, '" /e')
+   if (.Platform$OS.type != "unix") command <- paste0("start excel '", file, '" /e')
 
-   b <- base::system(command, intern = TRUE, wait = TRUE)
+   # Excel call:
+   b <- shell(paste0('start excel "', file, '" /e'), wait = TRUE)
 
-   # Remove CSV file from temporary directory:
-   #if (file.exists(file)) file.remove(file)
+   # Removes file from temporary directory:
+   #on.exit(unlink(file))
 }
