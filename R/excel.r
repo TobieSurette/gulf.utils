@@ -10,14 +10,12 @@
 #' @param ... Further arguments passed onto the \code{\link[utils]{write.table}} function.
 #'
 #' @examples
-#'
 #' # Send a vector to Excel:
 #' excel(1:10)
 #'
 #' # Send a 25 x 4 matrix of random numbers to Excel, with no headers:
 #' x <- matrix(runif(100), ncol = 4)
 #' excel(x, header = FALSE)
-#'
 
 #' @export
 excel <- function(x, ...) UseMethod("excel")

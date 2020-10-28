@@ -38,6 +38,12 @@ en2fr <- function(x, plural = FALSE, feminine = FALSE){
    x <- gsub("fishers", "pêcheurs", x)
    x <- gsub("fishing vessel", "bateau de pêche", x)
 
+   # Fishery management:
+   x <- gsub("commercials", "commerciaux", x)
+   x <- gsub("legal-sized", "taille légale", x)
+   x <- gsub("sub-legal", "sous-légal", x)
+   x <- gsub("skip-moulter", "saute-mue", x)
+
    # Science:
    x <- gsub("survey", "relevé", x)
    x <- gsub("surveys", "relevés", x)
@@ -50,7 +56,6 @@ en2fr <- function(x, plural = FALSE, feminine = FALSE){
    # Sexual maturity and reproduction:
    x <- gsub("primiparous", "primipare", x)
    x <- gsub("multiparous", "primipare", x)
-   x <- gsub("commercials", "commerciaux", x)
    x <- gsub("pubescent", "adolescent", x)
    x <- gsub("gonads", "gonades", x)
    x <- gsub("ovaries", "ovaires", x)

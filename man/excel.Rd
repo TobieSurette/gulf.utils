@@ -26,18 +26,16 @@ This function dumps a data frame into a temporary tab-delimited table and opens 
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{default}: Default key method.
+\item \code{default}: Default 'excel' method.
 
 \item \code{data.frame}: Export data frame to MS Excel.
 }}
 
 \examples{
-
 # Send a vector to Excel:
 excel(1:10)
 
 # Send a 25 x 4 matrix of random numbers to Excel, with no headers:
 x <- matrix(runif(100), ncol = 4)
 excel(x, header = FALSE)
-
 }
