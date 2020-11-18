@@ -19,4 +19,7 @@ language("f")     # Returns 'french'.
 language("franc") # Returns 'french'.
 language("ang")   # Returns 'english'.
 language("lat")   # Returns 'latin'.
+
+# Messy inputs:
+language(c("en", "ENgli", "fr", "francais", "fr", "lat"))
 }

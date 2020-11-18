@@ -11,13 +11,19 @@
 #' language("franc") # Returns 'french'.
 #' language("ang")   # Returns 'english'.
 #' language("lat")   # Returns 'latin'.
+#'
+#' # Messy inputs:
+#' language(c("en", "ENgli", "fr", "francais", "fr", "lat"))
 
 #' @export
 language <- function(x){
    options <- c("french", "francais", "français", "english", "anglais", "latin")
    if (missing(x)) return(options)
-   x <- options[grep(paste0("^", tolower(x)), options)[1]]
-   x[x %in% c("francais", "français")] <- "french"
-   x[x %in% c("anglais")] <- "english"
+   ux <- unique(x)
+   index <- match(x, ux)
+   for (i in 1:length(ux)) ux[i] <- options[grep(paste0("^", tolower(ux[i])), options)[1]]
+   ux[ux %in% c("francais", "français")] <- "french"
+   ux[ux %in% c("anglais")] <- "english"
+   x <- ux[index]
    return(x)
 }
