@@ -14,6 +14,8 @@ year.default <- function(x, ...){
 year.data.frame <- function(x, ...){
    names(x) <- tolower(names(x))
    if ("year" %in% tolower(names(x))) return(x$year)
-
-   return(as.numeric(substr(date(x), 1, 4)))
+   if ("date" %in% tolower(names(x))) date <- x$date else date <- date(x)
+   ux <- unique(date)
+   year <- as.numeric(substr(ux, 1, 4))
+   return(year[match(date, ux)])
 }
