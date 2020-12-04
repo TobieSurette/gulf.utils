@@ -33,11 +33,17 @@ match.default <- function(x, ...) return(base::match(x, ...))
 
 #' @describeIn match Match rows between two data frames.
 #' @export
-match.data.frame <- function(x, y, by = base::intersect(names(x), names(y)), ...){
+match.data.frame <- function(x, y, by, key, ...){
    # Check 'by' argument:
+   if (missing(by) & !missing(key)) by <- key
+   if (missing(by)){
+      if (!is.null(attr(y, "key"))) by <- attr(y, "key")
+      if (missing(by)) by <- base::intersect(names(x), names(y))
+   }
+   if (missing(by)) stop("Index key variable(s) not defined.")
+   if (!is.character(by)) stop("Index key must be a character vector.")
+   by <- by[(by %in% names(x)) & (by %in% names(y))]
    if (length(by) == 0) stop("There must be at least one common variable for the match to be performed.")
-   if (!all(by %in% names(x))) stop("Some 'by' variables are not in source object 'x'.")
-   if (!all(by %in% names(y))) stop("Some 'by' variables are not in target object 'y'.")
 
    # Convert fields to character vectors:
    fun <- function(x){
@@ -51,17 +57,9 @@ match.data.frame <- function(x, y, by = base::intersect(names(x), names(y)), ...
    # Check that the index key is unique in target object 'y':
    if (any(base::duplicated(y[by]))) stop ("Target object 'y' index key is not unique.")
 
-   # Find the indices:
-   if (length(by) == 1){
-      # Use usual vector-based 'match' function:
-      index <- base::match(x[, by], y[, by], ...)
-   }else{
-      # Merge index column from 'y' into 'x':
-      index <- base::match(apply(x[by], 1, function(x) paste0(x, collapse = "-t-")),
-                           apply(y[by], 1, function(x) paste0(x, collapse = "-t-")),
-                           ...)
-   }
+   # Find indices:
+   xx <- apply(x[ ,by , drop = FALSE], 1, function(x) paste0(x, collapse = "-t-"))
+   yy <- apply(y[ ,by , drop = FALSE], 1, function(x) paste0(x, collapse = "-t-"))
 
-   return(index)
+   return(base::match(xx, yy, ...))
 }
-
