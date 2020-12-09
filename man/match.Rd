@@ -10,7 +10,7 @@ match(x, ...)
 
 \method{match}{default}(x, ...)
 
-\method{match}{data.frame}(x, y, by = base::intersect(names(x), names(y)), ...)
+\method{match}{data.frame}(x, y, by, key, ...)
 }
 \arguments{
 \item{x}{Source data frame whose elements will be searched for in the target data frame \code{y}.}
