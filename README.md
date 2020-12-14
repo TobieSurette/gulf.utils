@@ -46,6 +46,7 @@ Function.   | Description
 `time2day`  | Convert time to days.
 `week`      | Convert time to week of the year.
 `julian`    | Convert time to julian day (i.e. day of the year).
+`year`      | Extract year from date.
 
 ### Data frame functions:
 
@@ -55,6 +56,7 @@ Function | Description
 -------- | -------------------------------------------------------------------
 `sort`   | Sort a data frame.
 `match`  | Return the row indices of matching entries between two data frames.
+`import` | Import data fields from one data frame to another.
 
 ### Data export functions:
 
