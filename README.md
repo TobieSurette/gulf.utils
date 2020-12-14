@@ -30,11 +30,23 @@ Function.   | Description
 
 These are functions which were added to extend `data.frame` objects' functionality:
 
-Function | Description
--------- | -------------------------------------------------------------------
-`sort`   | Sort a data frame.
-`match`  | Return the row indices of matching entries between two data frames.
-`import` | Import data fields from one data frame to another.
+Function  | Description
+--------- | -------------------------------------------------------------------
+`sort`    | Sort a data frame.
+`match`   | Return the row indices of matching entries between two data frames.
+`squeeze` | Remove empty column fields from a data frame. 
+`deflate` | Shrink data frame by removing empty fields and attaching singular fields as attributes. 
+`inflate` | Opposite of `deflate`.
+`import`  | Import data fields from one data frame to another.
+
+### Text functions:
+
+Function    | Description
+---------   | -----------------------------
+`deblank`   | Remove leading, trailing and repeating blanks in a string.
+`lexicon`   | Return the set of words found in text.
+`translate` | Dictionary translation of common fisheries terms. 
+`language`  | Language options.
 
 ### Data export functions:
 
