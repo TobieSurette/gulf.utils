@@ -28,6 +28,15 @@ en2fr <- function(x, plural = FALSE, feminine = FALSE){
    x <- gsub("females", "femelles", x)
    x <- gsub("female", "femelle", x)
 
+   # Science:
+   x <- gsub("survey", "relevé", x)
+   x <- gsub("surveys", "relevés", x)
+   x <- gsub("stratified", "stratifié", x)
+   x <- gsub("fishing grids", "quadrilatères de pêche", x)
+   x <- gsub("grids", "quadrilatères", x)
+   x <- gsub("grid", "quadrilatère", x)
+   x <- gsub("logbook", "jounral de bord", x)
+
    # Fishery:
    x <- gsub("fleet", "flotille", x)
    x <- gsub("landings", "débarquements", x)
@@ -44,15 +53,6 @@ en2fr <- function(x, plural = FALSE, feminine = FALSE){
    x <- gsub("sub-legal", "sous-légal", x)
    x <- gsub("skip-moulter", "saute-mue", x)
 
-   # Science:
-   x <- gsub("survey", "relevé", x)
-   x <- gsub("surveys", "relevés", x)
-   x <- gsub("stratified", "stratifié", x)
-   x <- gsub("fishing grids", "quadrilatères de pêche", x)
-   x <- gsub("grids", "quadrilatères", x)
-   x <- gsub("grid", "quadrilatère", x)
-   x <- gsub("logbook", "jounral de bord", x)
-
    # Sexual maturity and reproduction:
    x <- gsub("primiparous", "primipare", x)
    x <- gsub("multiparous", "primipare", x)
@@ -63,6 +63,7 @@ en2fr <- function(x, plural = FALSE, feminine = FALSE){
    x <- gsub("testicles", "testicules", x)
    x <- gsub("testicle", "testicule", x)
    x <- gsub("eggs remaining", "oeufs restants", x)
+   x <- gsub("cocoon", "cocon", x)
 
    # Colours:
    x <- gsub("white", "blanc", x)
