@@ -7,7 +7,7 @@
 \usage{
 import(x, ...) <- value
 
-\method{import}{data.frame}(x, variables, fill.na, ...) <- value
+\method{import}{data.frame}(x, variables, fill.na, group, ...) <- value
 }
 \arguments{
 \item{x}{Target object.}
@@ -31,6 +31,13 @@ Import from one object into another.
 }}
 
 \examples{
+# Import snow crab survey by-catch data:
+x <- read.scsset(year = 2020, valid = 1)
+y <- read.scscat(year = 2020, species = c("cod", "plaice"))
+y$species <- species(y$species)
+import(x, fill = 0, var = "number.caught", group = "species") <- y
+
+# Import snow crab category data:
 x <- read.scsset(year = 2020, valid = 1)
 b <- read.scsbio(2020)
 import(x, fill = 0) <- catch(b, category = c("M", "COM", "MF"))
