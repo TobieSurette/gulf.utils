@@ -1,6 +1,14 @@
-# gulf.utils
+# `gulf.utils` package
 
-Set of utility functions used in various 'gulf' packages. 
+The `gulf.utils` contains a core set of utility functions used in various 'gulf' packages. 
+
+Packages from the `gulf` series of packages can be installed directly from GitHub by running the following code from R:
+
+```
+install.packages("devtools")
+library(devtools)
+install_github("TobieSurette/gulf.utils")
+```
 
 ## Function overview:
 
