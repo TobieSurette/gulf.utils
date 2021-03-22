@@ -12,6 +12,8 @@
 #' @seealso \code{\link[gulf.utils]{match}}
 #'
 #' @examples
+#' library(gulf.data)
+#'
 #' # Import snow crab survey by-catch data:
 #' x <- read.scsset(year = 2020, valid = 1)
 #' y <- read.scscat(year = 2020, species = c("cod", "plaice"))
@@ -74,7 +76,7 @@
                      str <- gsub(" ", ".", str)
                      x[str] <- NA
                      x[str] <- v[ix, variables[j]]
-                     na.var <- c(na.var, str)
+                     na.var <- c(na.var, str)  # Accumulate which variables to use for 'fill.na'.
                   }
                }
             }
