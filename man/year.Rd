@@ -2,7 +2,7 @@
 % Please edit documentation in R/year.R
 \name{year}
 \alias{year}
-\title{Extract Year}
+\title{Year}
 \usage{
 year(x, ...)
 }

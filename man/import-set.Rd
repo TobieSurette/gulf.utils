@@ -31,6 +31,8 @@ Import from one object into another.
 }}
 
 \examples{
+library(gulf.data)
+
 # Import snow crab survey by-catch data:
 x <- read.scsset(year = 2020, valid = 1)
 y <- read.scscat(year = 2020, species = c("cod", "plaice"))

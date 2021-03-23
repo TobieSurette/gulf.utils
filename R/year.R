@@ -1,6 +1,8 @@
-#' Extract Year
+#' Year
 #'
 #' @description Extract year from a data object.
+#'
+#'
 
 #' @export
 year <- function(x, ...) UseMethod("year")
