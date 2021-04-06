@@ -52,7 +52,7 @@
    if (missing(variables)) variables <- names(value)
 
    # Define indexing variables:
-   key <- c(list(...)$by, list(...)$key, key(value), key(x))
+   key <- unique(c(list(...)$by, list(...)$key, key(value), key(x)))
    if (is.null(key)) key <- intersect(variables, names(x))
 
    # Remove indexing variables:
