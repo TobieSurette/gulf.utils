@@ -14,4 +14,5 @@ Functions for correcting common fishery and biological spelling errors.
 }
 \examples{
 spelling("aligatore")
+spelling("yelow  tail")
 }
