@@ -26,13 +26,15 @@ Function.   | Description
 ----------- | --------------------------------------------------
 `date`      | Create, reformat or extract date objects.
 `time`      | Create, reformat or extract time objects.
+`julian`    | Convert date to julian day (i.e. day of the year).
+`year`      | Extract year from date.
+`month`     | Extract month from date.
+`day`       | Extract day from date.
+`week`      | Convert date to week of the year.
 `time2sec`  | Convert time to seconds.
 `time2min`  | Convert time to minutes.
 `time2hour` | Convert time to hours.
 `time2day`  | Convert time to days.
-`week`      | Convert time to week of the year.
-`julian`    | Convert time to julian day (i.e. day of the year).
-`year`      | Extract year from date.
 
 ### Data frame functions:
 
