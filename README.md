@@ -1,6 +1,16 @@
 # `gulf.utils` package
 
-The `gulf.utils` contains a core set of utility functions used in various 'gulf' packages. 
+The `gulf.utils` contains a core set of utility functions used in various 'gulf' packages. Various 'gulf' packages are available, each containing specific functions to aid in accessing, manipulating and analyzing Southern Gulf of Saint Lawrence (sGSL) data sets.
+
+Function          | Description
+----------------- | -------------------------------
+`gulf.utils`      | Core utility functions.
+`gulf.metadata`   | Functions to assign or extract metadata associated with data objects.
+`gulf.data`       | Functions to access, manipulate and summarize sGSL data sets.
+`gulf.trawl.data` | Provide access to trawl probe data from sGSL Science surveys.
+`gulf.graphics`   | Data plotting functions.
+`gulf.spatial`    | Functions to perform spatial plots and access spatial data from the sGSL.
+`gulf.manage`     | Functions to manage sGSL data and 'gulf' packages.
 
 Packages from the `gulf` series of packages can be installed directly from GitHub by running the following code from R:
 
