@@ -19,5 +19,8 @@ install.gulf <- function(){
 
    library(devtools)
 
-   for (i in 1:length(gulf)) install_github(paste0("TobieSurette/", gulf[i]))
+   for (i in 1:length(gulf)){
+      if (gulf[i] == "gulf.spatial") library(gulf.data)
+      install_github(paste0("TobieSurette/", gulf[i]))
+   }
 }
