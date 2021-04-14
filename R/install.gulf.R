@@ -5,7 +5,7 @@
 #' @examples
 #' install.gulf()
 
-#' @export
+#' @export install.gulf
 install.gulf <- function(){
    # Define packages:
    required <- c("devtools", "sp", "rgdal", "akima")
