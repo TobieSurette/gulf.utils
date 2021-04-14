@@ -1,6 +1,20 @@
 # `gulf.utils` package
 
-The `gulf.utils` contains a core set of utility functions used in various 'gulf' packages. 
+The `gulf.utils` contains a core set of utility functions used in various 'gulf' packages. Various 'gulf' packages are available, each containing specific functions to aid in accessing, manipulating and analyzing Southern Gulf of Saint Lawrence (sGSL) data sets.
+
+## `gulf` Packages:
+
+Function          | Description
+----------------- | -------------------------------
+`gulf.utils`      | Core utility functions.
+`gulf.metadata`   | Functions to assign or extract metadata associated with data objects.
+`gulf.data`       | Functions to access, manipulate and summarize sGSL data sets.
+`gulf.trawl.data` | Provide access to trawl probe data from sGSL Science surveys.
+`gulf.graphics`   | Data plotting functions.
+`gulf.spatial`    | Functions to perform spatial plots and access spatial data from the sGSL.
+`gulf.manage`     | Functions to manage sGSL data and 'gulf' packages.
+
+### Installation:
 
 Packages from the `gulf` series of packages can be installed directly from GitHub by running the following code from R:
 
@@ -10,7 +24,7 @@ install_github("TobieSurette/gulf.utils")
 install.gulf()
 ```
 
-## Function overview:
+## `gulf.utils` Function overview:
 
 ### Clearing functions:
 
@@ -26,13 +40,15 @@ Function.   | Description
 ----------- | --------------------------------------------------
 `date`      | Create, reformat or extract date objects.
 `time`      | Create, reformat or extract time objects.
+`julian`    | Convert date to julian day (i.e. day of the year).
+`year`      | Extract year from date.
+`month`     | Extract month from date.
+`day`       | Extract day from date.
+`week`      | Convert date to week of the year.
 `time2sec`  | Convert time to seconds.
 `time2min`  | Convert time to minutes.
 `time2hour` | Convert time to hours.
 `time2day`  | Convert time to days.
-`week`      | Convert time to week of the year.
-`julian`    | Convert time to julian day (i.e. day of the year).
-`year`      | Extract year from date.
 
 ### Data frame functions:
 
