@@ -74,7 +74,7 @@ Function    | Description
 `language`  | Language options.
 `lexicon`   | Return the set of words found in text.
 `spelling`  | Correct word spelling.
-`translate` | Dictionary translation of common fisheries terms. 
+`translate` | Translation of common fisheries terms. 
 
 ## Data export functions:
 
