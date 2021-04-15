@@ -73,6 +73,7 @@ Function    | Description
 `fr2en`     | Translate common fisheries science words and short phrases from french to english.
 `language`  | Language options.
 `lexicon`   | Return the set of words found in text.
+`spelling`  | Correct word spelling.
 `translate` | Dictionary translation of common fisheries terms. 
 
 ## Data export functions:
