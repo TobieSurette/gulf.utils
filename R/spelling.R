@@ -11,7 +11,7 @@
 #' @export
 spelling <- function(x){
    # Load spelling table:
-   tab <- read.table(locate(file = "spelling.txt"), header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+   tab <- read.table(locate(package = "gulf.utils", file = "spelling.txt"), header = TRUE, sep = "\t", stringsAsFactors = FALSE)
 
    # Perform corrections:
    for (i in 1:nrow(tab)) x <- gsub(tab$expression[i], tab$correction[i], x)
