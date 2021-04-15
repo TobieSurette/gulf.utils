@@ -1,4 +1,4 @@
-## `gulf` Packages:
+# `gulf` Packages:
 
 Function          | Description
 ----------------- | -------------------------------
@@ -10,7 +10,7 @@ Function          | Description
 `gulf.spatial`    | Functions to perform spatial plots and access spatial data from the sGSL.
 `gulf.manage`     | Functions to manage sGSL data and 'gulf' packages.
 
-### Installation:
+## Installation:
 
 Packages from the `gulf` series of packages can be installed directly from GitHub by running the following code from R:
 
