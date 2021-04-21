@@ -92,7 +92,7 @@ expand.data.frame <- function(x, ...){
             names(x) <- c(vars, names(a[i]))
          }
          if ((length(a[[i]]) > 1) & (length(names(a[[i]])) > 0)){
-            for (j in 1:length(a)){
+            for (j in 1:length(a[[i]])){
                vars <- names(x)
                x[, ncol(x)+1] <- a[[i]][j]
                str <- names(a[[i]][j])
@@ -105,3 +105,17 @@ expand.data.frame <- function(x, ...){
 
    return(x)
 }
+
+#' Collapse singluar fields
+#' Expand data frame so its fields contain singluar attributes.
+#' - Including header information?
+#' - Do not necessarily remove attributes.
+#'
+#' @rawNamespace S3method(collapse,data.frame)
+collapse.data.frame <- function(){
+
+
+}
+
+
+
