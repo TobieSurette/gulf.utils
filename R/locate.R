@@ -53,3 +53,8 @@ locate.default <- function(x, file, path, package, keywords, full.names = TRUE, 
 
    if (full.names) return(f$path) else return(f$file)
 }
+
+
+
+
+
