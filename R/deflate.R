@@ -79,10 +79,11 @@ inflate.data.frame <- function(x, ...){
 }
 
 #' @export
-expand.data.frame <- function(x, ...){
+expand.data.frame <- function(x, keep, ...){
    # Loop over attributes:
    a <- attributes(x)
    a <- a[setdiff(names(a), c("names", "class", "row.names"))]
+   if (!missing(keep)) a <- a[keep]
 
    if (length(a) > 0){
       for (i in 1:length(a)){
