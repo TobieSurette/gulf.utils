@@ -40,6 +40,9 @@ inflate <- function(x, ...) UseMethod("inflate")
 #' @export expand
 expand <- function(x, ...) UseMethod("expand")
 
+#' @export collapse
+collapse <- function(x, ...) UseMethod("collapse")
+
 #' @export
 deflate.data.frame <- function(x, ...){
    tmp <- unlist(lapply(x, function(x) if (length(unique(x)) == 1) return(unique(x)) else return(NULL)))

@@ -2,9 +2,12 @@
 % Please edit documentation in R/translate.R
 \name{en2fr}
 \alias{en2fr}
+\alias{fr2en}
 \title{Translate Words}
 \usage{
 en2fr(x, plural = FALSE, feminine = FALSE)
+
+fr2en(x, plural = FALSE, feminine = FALSE)
 }
 \arguments{
 \item{x}{Character string(s).}
@@ -20,6 +23,8 @@ Functions for translating common fishery and biological words and terms. These
 \section{Functions}{
 \itemize{
 \item \code{en2fr}: Translate from english to french.
+
+\item \code{fr2en}: Translate from english to french.
 }}
 
 \examples{
