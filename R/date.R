@@ -107,3 +107,62 @@ date.data.frame <- function(x, ...){
 
    return(v)
 }
+
+#' @export
+day <- function(x, ...) UseMethod("day")
+
+#' @describeIn date Default method for extracting month from a date.
+#' @export
+day.default <- function(x, ...){
+   ix <- grep("day", tolower(names(x)))
+   if (length(ix) > 0) v <- x[[ix[1]]]
+
+   # Extract from date:
+   ux <- unique(x)
+   if (length(grep("POSIX", class(x))) == 0) date <- gulf.utils::date(ux) else date <- ux
+   if (length(grep("POSIX", class(date))) > 0){
+      v <- as.numeric(substr(as.character(date), 9, 10))
+      return(v[match(x, ux)])
+   }
+
+   return(NULL)
+}
+
+#' @export
+month <- function(x, ...) UseMethod("month")
+
+#' @describeIn date Default method for extracting month from a date.
+#' @export
+month.default <- function(x, ...){
+   ix <- grep("month", tolower(names(x)))
+   if (length(ix) > 0) v <- x[[ix[1]]]
+
+   # Extract from date:
+   ux <- unique(x)
+   if (length(grep("POSIX", class(x))) == 0) date <- gulf.utils::date(ux) else date <- ux
+   if (length(grep("POSIX", class(date))) > 0){
+      v <- as.numeric(substr(as.character(date), 6, 7))
+      return(v[match(x, ux)])
+   }
+
+   return(NULL)
+}
+
+#' @export
+year <- function(x, ...) UseMethod("year")
+
+#' @describeIn date Default method for extracting year field from a date.
+#' @export
+year.default <- function(x, ...){
+   ix <- grep("year", tolower(names(x)))
+   if (length(ix) > 0) v <- x[[ix[1]]]
+
+   ux <- unique(x)
+   if (length(grep("POSIX", class(x))) == 0) date <- gulf.utils::date(ux) else date <- ux
+   if (length(grep("POSIX", class(date))) > 0){
+      v <- as.numeric(substr(as.character(date), 1, 4))
+      return(v[match(x, ux)])
+   }
+
+   return(NULL)
+}

@@ -5,6 +5,9 @@
 \alias{date.default}
 \alias{date.character}
 \alias{date.data.frame}
+\alias{day.default}
+\alias{month.default}
+\alias{year.default}
 \title{Date Extraction and Conversion}
 \usage{
 date(x, ...)
@@ -14,6 +17,12 @@ date(x, ...)
 \method{date}{character}(x, ...)
 
 \method{date}{data.frame}(x, ...)
+
+\method{day}{default}(x, ...)
+
+\method{month}{default}(x, ...)
+
+\method{year}{default}(x, ...)
 }
 \arguments{
 \item{x}{Object.}
@@ -38,6 +47,12 @@ string or a data frame.
 \item \code{character}: Convert character string to date.
 
 \item \code{data.frame}: Extract date from a data frame.
+
+\item \code{default}: Default method for extracting month from a date.
+
+\item \code{default}: Default method for extracting month from a date.
+
+\item \code{default}: Default method for extracting year field from a date.
 }}
 
 \examples{
