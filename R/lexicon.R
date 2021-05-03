@@ -23,3 +23,6 @@ lexicon.character <- function(x, ...){
    v <- v[nchar(v) > 0]
    return(v)
 }
+
+#' @export words
+words <- lexicon
