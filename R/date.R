@@ -115,13 +115,15 @@ day <- function(x, ...) UseMethod("day")
 #' @export
 day.default <- function(x, ...){
    ix <- grep("day", tolower(names(x)))
-   if (length(ix) > 0) v <- x[[ix[1]]]
+   if (length(ix) > 0) return(x[[ix[1]]])
 
-   # Extract from date:
-   ux <- unique(x)
-   if (length(grep("POSIX", class(x))) == 0) date <- gulf.utils::date(ux) else date <- ux
-   if (length(grep("POSIX", class(date))) > 0){
-      v <- as.numeric(substr(as.character(date), 9, 10))
+   ix <- grep("date", tolower(names(x)))
+   if (length(ix) > 0) x <- x[[ix]]
+
+   if (length(grep("POSIX", class(x))) == 0) x <- gulf.utils::date(x)
+   if (length(grep("POSIX", class(x))) > 0){
+      ux <- unique(x)
+      v <- as.numeric(substr(as.character(ux), 9, 10))
       return(v[match(x, ux)])
    }
 
@@ -135,13 +137,15 @@ month <- function(x, ...) UseMethod("month")
 #' @export
 month.default <- function(x, ...){
    ix <- grep("month", tolower(names(x)))
-   if (length(ix) > 0) v <- x[[ix[1]]]
+   if (length(ix) > 0) return(x[[ix[1]]])
 
-   # Extract from date:
-   ux <- unique(x)
-   if (length(grep("POSIX", class(x))) == 0) date <- gulf.utils::date(ux) else date <- ux
-   if (length(grep("POSIX", class(date))) > 0){
-      v <- as.numeric(substr(as.character(date), 6, 7))
+   ix <- grep("date", tolower(names(x)))
+   if (length(ix) > 0) x <- x[[ix]]
+
+   if (length(grep("POSIX", class(x))) == 0) x <- gulf.utils::date(x)
+   if (length(grep("POSIX", class(x))) > 0){
+      ux <- unique(x)
+      v <- as.numeric(substr(as.character(ux), 6, 7))
       return(v[match(x, ux)])
    }
 
@@ -155,12 +159,15 @@ year <- function(x, ...) UseMethod("year")
 #' @export
 year.default <- function(x, ...){
    ix <- grep("year", tolower(names(x)))
-   if (length(ix) > 0) v <- x[[ix[1]]]
+   if (length(ix) > 0) return(x[[ix[1]]])
 
-   ux <- unique(x)
-   if (length(grep("POSIX", class(x))) == 0) date <- gulf.utils::date(ux) else date <- ux
-   if (length(grep("POSIX", class(date))) > 0){
-      v <- as.numeric(substr(as.character(date), 1, 4))
+   ix <- grep("date", tolower(names(x)))
+   if (length(ix) > 0) x <- x[[ix]]
+
+   if (length(grep("POSIX", class(x))) == 0) x <- gulf.utils::date(x)
+   if (length(grep("POSIX", class(x))) > 0){
+      ux <- unique(x)
+      v <- as.numeric(substr(as.character(ux), 1, 4))
       return(v[match(x, ux)])
    }
 
