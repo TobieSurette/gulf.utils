@@ -5,6 +5,11 @@
 
 #' @export
 unaccent <- function(x){
+   x <- gsub("\xbc", "0.25", x)
+   x <- gsub("\xfb", "u", x)
+   x <- gsub("\xe0", "a", x)
+   x <- gsub("\xea", "e", x)
+   x <- gsub("\xe2", "a", x)
    x <- gsub("\x82", "e", x)
    x <- gsub("<82>", "e", x)
    x <- gsub("\x8a", "e", x)
