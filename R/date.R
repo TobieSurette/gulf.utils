@@ -24,7 +24,7 @@
 #' date(year = 2000, month = 9, day = 1:30)
 #'
 #' # Sorts out YYYYMMDD and DDMMYYYY:
-#' date(c("2000-01-19", "19-01-2000", "2000/01/19"))
+#' date(c("2000-01-19", "19-01-2000", "2000/01/19", "00-1-19"))
 #'
 #' # Apply to data frame:
 #' x <- data.frame(Year = 2000, Month = 01, Day = 1:30)
@@ -46,28 +46,40 @@ date.default <- function(x, year, month, day, ...){
    if (length(day) == 1)   day   <- rep(day, max(n))
    if ((length(year) != length(month)) | (length(month) != length(day)))
       stop("'year', 'month' or 'day' have inconsistent lengths.")
-   v <- paste0(year, "-", month, "-", day)
-   return(date(paste0(year, "-", month, "-", day)))
+
+   # Convert from character:
+   v <- date(paste0(year, "-", month, "-", day))
+
+   return(v)
 }
 
 #' @describeIn date Convert character string to date.
 #' @export
 date.character <- function(x, ...){
+   # Standardize non-digit characters:
    x <- gsub("^ ", "", x)
    x <- gsub(" $", "", x)
    x <- gsub("[/ ]", "-", x)
-   fun <- function(x){
-      i <- which(nchar(x) == 4)
-      if (i == 1) return(paste(x[1:3], collapse = "-"))
-      if (i == 3) return(paste(x[3:1], collapse = "-"))
-      return("          ")
-   }
-   v <- rep(ISOdate(NA, NA, NA, tz = ""), length(x))
-   x <- strsplit(x, "-")
 
-   index <- which((unlist(lapply(x, length)) == 3) &
-                  (unlist(lapply(x, function(x) if (length(x) == 0) return(0) else max(nchar(x)))) == 4))
-   if (length(index) > 0) v[index] <- unlist(lapply(x, fun))
+   fun <- function(x){
+      y <- strsplit(x, "-")[[1]]
+      i <- which(nchar(y) == 4)
+      if (length(i) == 1) if (i == 3) y <- y[3:1]
+      if (nchar(y[1]) == 2) y[1] <- paste0("20", y[1])
+      if ((gsub("[0-9]", "", y[1]) == "") & (gsub("[0-9]", "", y[2]) == "") & (gsub("[0-9]", "", y[3]) == "")){
+         x <- paste(y, collapse = "-")
+      }else{
+         x <- NA
+      }
+
+      return(x)
+   }
+
+   # Convert to date format:
+   ux <- unique(x[!is.na(x)])
+   uv <- rep(as.POSIXct(NA), length(ux))
+   for (i in 1:length(ux)) uv[i] <- as.POSIXct(fun(ux[i]))
+   v <- uv[match(x, ux)]
 
    return(v)
 }
@@ -81,6 +93,7 @@ date.data.frame <- function(x, ...){
    datevar <- names(x)[grep("^date", names(x))][1]
    if (length(datevar == 0)) datevar <- names(x)[grep("date$", names(x))][1]
    datevar <- datevar[!is.na(datevar)]
+
    # Process date variable:
    if (length(datevar) > 0){
       if (length(grep("POSIX", class(x[, datevar]))) > 0){
@@ -100,10 +113,10 @@ date.data.frame <- function(x, ...){
    year  <- x[, datevars["year"]]
    month <- x[, datevars["month"]]
    day   <- x[, datevars["day"]]
-   v <- rep(ISOdate(NA, NA, NA, tz = ""), nrow(x))
-   index <- which(!is.na(year) & !is.na(month) & !is.na(day))
+   v <- rep(as.POSIXct(NA), nrow(x))
+   ix <- which(!is.na(year) & !is.na(month) & !is.na(day))
 
-   if (length(index) > 0) v[index] <- as.POSIXct(paste0(formatC(year[index]), "-", month[index], "-", day[index]), tz = "")
+   if (length(ix) > 0) v[ix] <- as.POSIXct(paste0(formatC(year[ix]), "-", month[ix], "-", day[ix]), tz = "")
 
    return(v)
 }

@@ -45,7 +45,7 @@ time.default <- function(x, date, time, year, month, day, hour = 0, minute = 0, 
    if (!missing(x)) return(stats::time(x, ...))
    if (missing(date)) date <- paste0(year, "-", month, "-", day) else date <- date(as.character(date))
    if (missing(time)) time <- paste0(hour, ":", minute, ":", second)
-   v <- as.POSIXlt(paste0(date ," ", time), tz = "")
+   v <- as.POSIXct(paste0(as.character(date) ," ", as.character(time)), tz = "")
 
    return(v)
 }
@@ -148,6 +148,7 @@ time.data.frame <- function(x, ...){
       second <- as.numeric(substr(x$time, 7, 8))
       v <- time.default(year = x$year, month = x$month, day = x$day, hour = hour, minute = minute, second = second)
    }
+
    if (all(c("date", "time") %in% names(x))) v <- as.POSIXct(paste(x$date, x$time))
 
    if (is.null(v)) stop("Unable to convert time fields.")
