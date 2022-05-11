@@ -1,4 +1,6 @@
-#' Translate Words
+#' @title Translate Words
+#'
+#' @name translate
 #'
 #' @description Functions for translating common fishery and biological words and terms. These
 #'              functions are intended for translating words and common short phrases only.
@@ -15,11 +17,10 @@
 #' en2fr("fishing grids")
 #' en2fr("survey")
 
-#' @describeIn translate Translate from english to french.
 #' @export
 en2fr <- function(x, plural = FALSE, feminine = FALSE){
    # Load dictionary:
-   tab <- read.csv(locate(package = "gulf.utils", file = "dictionnary.csv"), header = TRUE, stringsAsFactors = FALSE)
+   tab <- utils::read.csv(locate(package = "gulf.utils", file = "dictionnary.csv"), header = TRUE, stringsAsFactors = FALSE)
 
    # Perform substitutions:
    for (i in 1:nrow(tab)) x <- gsub(tab$english[i], tab$french[i], x)
@@ -27,11 +28,11 @@ en2fr <- function(x, plural = FALSE, feminine = FALSE){
    return(x)
 }
 
-#' @describeIn translate Translate from english to french.
+#' @rdname translate
 #' @export
 fr2en <- function(x, plural = FALSE, feminine = FALSE){
    # Load dictionary:
-   tab <- read.csv(locate(package = "gulf.utils", file = "dictionnary.csv"), header = TRUE, stringsAsFactors = FALSE)
+   tab <- utils::read.csv(locate(package = "gulf.utils", file = "dictionnary.csv"), header = TRUE, stringsAsFactors = FALSE)
 
    # Perform substitutions:
    for (i in 1:nrow(tab)) x <- gsub(tab$french[i], tab$english[i], x)

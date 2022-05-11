@@ -32,10 +32,12 @@ This function dumps a data frame into a temporary tab-delimited table and opens 
 }}
 
 \examples{
+\dontrun{
 # Send a vector to Excel:
-excel(1:10)
+#' excel(1:10)
 
 # Send a 25 x 4 matrix of random numbers to Excel, with no headers:
 x <- matrix(runif(100), ncol = 4)
 excel(x, header = FALSE)
+}
 }

@@ -2,9 +2,12 @@
 % Please edit documentation in R/unaccent.R
 \name{unaccent}
 \alias{unaccent}
-\title{Remove French Characters:}
+\title{Remove Accented Characters}
 \usage{
 unaccent(x)
+}
+\arguments{
+\item{x}{Character string(s) where accented characters will be replaced by their unaccented versions.}
 }
 \description{
 Replace french characters with unaccented versions.

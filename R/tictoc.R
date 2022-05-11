@@ -1,4 +1,4 @@
-#' Calculate elapsed time
+#' @title Calculate elapsed time
 #'
 #' @name tictoc
 #'

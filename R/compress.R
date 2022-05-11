@@ -1,8 +1,13 @@
-#' Compress or Expand Data Frames
+#' @title Compress or Expand Data Frames
 #'
 #' @description Function to remove or restore redundant or empty elements from a data object.
 #'
 #' @param x Data object.
+#' @param keep Data object.
+#' @param na.rm Logical value specifying whether to remove columns containing only NA values. columns containing only NA values.
+#' @param remove Character string(s) specifying other column contents to be treated as empty.
+#' @param unique Logical value specifying whether to remove columns that contain only a single unique value.
+#' @param ... Not used.
 #'
 #' @examples
 #' x <- data.frame(year = 2018, count = rpois(10, 5), survey = "scs", group = rep(1:2, each = 5))
@@ -19,9 +24,7 @@ compress <- function(x, ...) UseMethod("compress")
 
 #' @describeIn compress Remove empty data columns.
 #' @export
-compress.data.frame <- function(x, keep, na.rm = TRUE, remove = "", unique = TRUE, ...){
-   if (missing(keep)) keep <- ""
-
+compress.data.frame <- function(x, keep = "", na.rm = TRUE, remove = "", unique = FALSE, ...){
    cols  <- 1:ncol(x)
    a <- list()
    for (i in 1:ncol(x)){
@@ -54,10 +57,11 @@ compress.data.frame <- function(x, keep, na.rm = TRUE, remove = "", unique = TRU
    return(x)
 }
 
+#' @rdname compress
 #' @export expand
 expand <- function(x, ...) UseMethod("expand")
 
-#' @describeIn compress Attach data hidden as attributes to a data frame.
+#' @rdname compress
 #' @export
 expand.data.frame <- function(x, keep, ...){
    # Loop over attributes:

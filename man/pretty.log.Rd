@@ -9,6 +9,8 @@
 \arguments{
 \item{x}{A numeric vector.}
 
+\item{base}{Logarithmic base.}
+
 \item{n}{An integer giving the target number of intervals. Non-integer values are rounded down.}
 
 \item{...}{Further arguments passed on to \code{\link[base]{pretty}}.}

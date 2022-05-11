@@ -1,10 +1,11 @@
-#' Pretty sequence of logarithmic values
+#' @title Pretty sequence of logarithmic values
 #'
 #' @description Returns a sequence of values on the logarithmic scale suitable for labelling on a logarithmic plot, i.e.
 #' the values are equally spaced on the log-scale.
 #'
 #' @param x A numeric vector.
 #' @param n An integer giving the target number of intervals. Non-integer values are rounded down.
+#' @param base Logarithmic base.
 #' @param ... Further arguments passed on to \code{\link[base]{pretty}}.
 #'
 #' @examples
@@ -41,8 +42,8 @@ pretty.log <- function(x, base, n = 5, ...){
 
       # Remove values lying beyond the data:
       if (length(s) > 1){
-         d <- diff(log(c(s[(length(s)-1)], max(x)), base = base[k])) /
-              diff(log(s[(length(s)-1):length(s)], base = base[k]))
+         d <- diff(log(c(s[(length(s)-1)], max(x)), base = base[i])) /
+              diff(log(s[(length(s)-1):length(s)], base = base[i]))
          if (d < 0.5) s <- s[-length(s)]
       }
 

@@ -13,11 +13,11 @@ time(x, ...)
 
 \method{time}{default}(x, date, time, year, month, day, hour = 0, minute = 0, second = 0, ...)
 
-\method{time}{logical}(x)
+\method{time}{logical}(x, ...)
 
-\method{time}{numeric}(x)
+\method{time}{numeric}(x, ...)
 
-\method{time}{character}(x)
+\method{time}{character}(x, ...)
 
 \method{time}{data.frame}(x, ...)
 }

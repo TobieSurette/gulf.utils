@@ -1,4 +1,4 @@
-#' Repeat vectors
+#' @title Repeat vectors
 #'
 #' @description Create matrices by repeating vectors row-wise or column-wise a specified number of times.
 #'

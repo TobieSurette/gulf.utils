@@ -5,14 +5,16 @@
 \alias{sort.data.frame}
 \title{Sort Data Frame}
 \usage{
-\method{sort}{data.frame}(x, by, increasing = TRUE, ...)
+\method{sort}{data.frame}(x, decreasing = FALSE, by, ...)
 }
 \arguments{
 \item{x}{Data frame.}
 
+\item{decreasing}{Logical value specifying whether to sort by decreasing order.}
+
 \item{by}{Field variable names or column indices by which to sort a data frame.}
 
-\item{increasing}{Logical value specifying whether to sort by increasing order.}
+\item{...}{Not used.}
 }
 \description{
 Sorts a data frame by one or more columns.

@@ -4,13 +4,19 @@
 \alias{words}
 \alias{words.default}
 \alias{words.character}
-\title{Extract Words}
+\alias{nword}
+\alias{lexicon}
+\title{Extract or Count Words}
 \usage{
 words(x, ...)
 
 \method{words}{default}(x, file, ...)
 
 \method{words}{character}(x, ...)
+
+nword(x, ...)
+
+lexicon(x, ...)
 }
 \arguments{
 \item{x}{Character vector or an object coercible to a text objexct.}
@@ -22,13 +28,7 @@ words(x, ...)
 \description{
 Return a list of words contained in a text.
 }
-\section{Methods (by class)}{
-\itemize{
-\item \code{default}: Returns a character vector of component words.
-
-\item \code{character}: Returns a character vector of component words.
-}}
-
 \examples{
 words("The punctuation, in this phrase; is ... really: 'terrible'.")
+nword("The punctuation, in this phrase; is ... really: 'terrible'.")
 }

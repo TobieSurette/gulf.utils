@@ -21,6 +21,8 @@ match(x, ...)
 
 \item{by}{Column name(s) which will be used for matching elements.
 The default is the common column names for \code{x} and \code{y}.}
+
+\item{key}{Character vector defining index key.}
 }
 \description{
 Returns the row indices of a target data frame which match those of a source data frame.
@@ -45,6 +47,4 @@ y <- data.frame(
 # Get the list of indices matching the rows of 'x' to 'y':
 index <- match(x, y)
 
-# Get the list of indices matching the rows "u" of 'x' to 'y':
-index <- match(x, y, by = "u")
 }

@@ -27,6 +27,8 @@ date(x, ...)
 \arguments{
 \item{x}{Object.}
 
+\item{...}{Further arguments.}
+
 \item{year}{Date year.}
 
 \item{month}{Date month.}
@@ -48,7 +50,7 @@ string or a data frame.
 
 \item \code{data.frame}: Extract date from a data frame.
 
-\item \code{default}: Default method for extracting month from a date.
+\item \code{default}: Default method for extracting day from a date.
 
 \item \code{default}: Default method for extracting month from a date.
 

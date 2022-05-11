@@ -10,11 +10,17 @@ locate(x, ...)
 \method{locate}{default}(x, file, path, package, keywords, full.names = TRUE, ...)
 }
 \arguments{
+\item{x}{Not used.}
+
+\item{...}{Not used.}
+
 \item{file}{Character string(s) specifying the files, including regular expressions, to search for in the file name.}
 
 \item{path}{Character string specifying the file path to search.}
 
 \item{package}{Character string specifying the package name.}
+
+\item{keywords}{Character string specifying keywords that the path and file names must contain.}
 
 \item{full.names}{Logical value specifying whether to return the path names along with the file names.}
 }
@@ -30,8 +36,10 @@ Searches for the path(s) and name of package data file(s).
 }}
 
 \examples{
+\dontrun{
 locate(package = "gulf.data", file = "species.csv")
 locate(package = "gulf.data", file = "*.csv")
+}
 
 }
 \seealso{

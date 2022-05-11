@@ -3,17 +3,30 @@
 \name{compress}
 \alias{compress}
 \alias{compress.data.frame}
+\alias{expand}
 \alias{expand.data.frame}
 \title{Compress or Expand Data Frames}
 \usage{
 compress(x, ...)
 
-\method{compress}{data.frame}(x, keep, na.rm = TRUE, remove = "", unique = TRUE, ...)
+\method{compress}{data.frame}(x, keep = "", na.rm = TRUE, remove = "", unique = FALSE, ...)
+
+expand(x, ...)
 
 \method{expand}{data.frame}(x, keep, ...)
 }
 \arguments{
 \item{x}{Data object.}
+
+\item{...}{Not used.}
+
+\item{keep}{Data object.}
+
+\item{na.rm}{Logical value specifying whether to remove columns containing only NA values. columns containing only NA values.}
+
+\item{remove}{Character string(s) specifying other column contents to be treated as empty.}
+
+\item{unique}{Logical value specifying whether to remove columns that contain only a single unique value.}
 }
 \description{
 Function to remove or restore redundant or empty elements from a data object.
@@ -21,8 +34,6 @@ Function to remove or restore redundant or empty elements from a data object.
 \section{Methods (by class)}{
 \itemize{
 \item \code{data.frame}: Remove empty data columns.
-
-\item \code{data.frame}: Attach data hidden as attributes to a data frame.
 }}
 
 \examples{

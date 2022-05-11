@@ -30,6 +30,8 @@ week(x, reference = "Sunday")
 \item{reference}{Reference date, time or day of the week.}
 
 \item{units}{Time units: \code{secs}, \code{mins}, \code{hours} or \code{days}.}
+
+\item{...}{Not used.}
 }
 \description{
 Calculate time difference relative to a specified reference time.

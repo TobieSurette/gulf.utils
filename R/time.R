@@ -52,11 +52,11 @@ time.default <- function(x, date, time, year, month, day, hour = 0, minute = 0, 
 
 #' @describeIn time Convert time from logical value.
 #' @export
-time.logical <- function(x) return(time(as.numeric(x)))
+time.logical <- function(x, ...) return(time(as.numeric(x)))
 
 #' @describeIn time Convert time from numeric value.
 #' @export
-time.numeric <- function(x){
+time.numeric <- function(x, ...){
    hour <- floor(x)
    hour[(hour < 0) & (hour > 24)] <- NA
    min <- 60 * (x %% 1)
@@ -72,7 +72,7 @@ time.numeric <- function(x){
 
 #' @describeIn time Convert time from character string.
 #' @export
-time.character <- function(x){
+time.character <- function(x, ...){
    # Initialize variables:
    hour <- rep(NA, length(x))
    min <- rep(NA, length(x))

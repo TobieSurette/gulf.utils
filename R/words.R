@@ -1,4 +1,6 @@
-#' Extract Words
+#' @title Extract or Count Words
+#'
+#' @name words
 #'
 #' @description Return a list of words contained in a text.
 #'
@@ -8,15 +10,16 @@
 #'
 #' @examples
 #' words("The punctuation, in this phrase; is ... really: 'terrible'.")
+#' nword("The punctuation, in this phrase; is ... really: 'terrible'.")
 
 #' @export words
 words <- function(x, ...) UseMethod("lexicon")
 
-#' @describeIn words Returns a character vector of component words.
+#' @rdname words
 #' @export
 words.default <- function(x, file, ...) if (!missing(file)) return(lexicon(readLines(file)))
 
-#' @describeIn words Returns a character vector of component words.
+#' @rdname words
 #' @export
 words.character <- function(x, ...){
    v <- unique(unlist(strsplit(x, "[ ,-.:'();]")))
@@ -24,5 +27,10 @@ words.character <- function(x, ...){
    return(v)
 }
 
-#' @export words
+#' @rdname words
+#' @export nword
+nword <- function(x, ...) return(length(words(as.character(x), ...)))
+
+#' @rdname words
+#' @export lexicon
 lexicon <- words

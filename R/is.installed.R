@@ -1,4 +1,4 @@
-#' Check Package Installation
+#' @title Check Package Installation
 #'
 #' @description This function checks whether an R package(s) is installed.
 #'
@@ -6,7 +6,6 @@
 #' @return Logical value(s).
 #'
 #' @examples
-#'
 #' # Check whether there is a 'base' and 'splines' package:
 #' is.installed(c("base", "splines"))
 #'

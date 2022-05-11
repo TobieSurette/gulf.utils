@@ -1,4 +1,4 @@
-#' Sort Data Frame
+#' @title Sort Data Frame
 #'
 #' @name sort
 #'
@@ -6,7 +6,8 @@
 #'
 #' @param x Data frame.
 #' @param by Field variable names or column indices by which to sort a data frame.
-#' @param increasing Logical value specifying whether to sort by increasing order.
+#' @param decreasing Logical value specifying whether to sort by decreasing order.
+#' @param ... Not used.
 #'
 #' @examples
 #' # Create a simple data frame:
@@ -23,9 +24,9 @@
 
 #' @rdname sort
 #' @export
-sort.data.frame <- function(x, by, increasing = TRUE, ...){
+sort.data.frame <- function(x, decreasing = FALSE, by, ...){
    # Define 'by':
-   if (missing(by)) if (attr(x, "key")) by <- key(x) else by <- names(x)
+   if (missing(by)) if (attr(x, "key")) by <- attr(x, "key") else by <- names(x)
 
    # Check if all variables are in the target object.
    if (!all(by %in% names(x))) stop("Some column names are not in target object.")
@@ -37,13 +38,13 @@ sort.data.frame <- function(x, by, increasing = TRUE, ...){
      str <- paste(str, "x[, '", by[i], "']", sep = "")
    }
    str <- paste(str, ")", sep = "")
-   index <- eval(parse(text = str))
+   ix <- eval(parse(text = str))
 
    # Invert index if '!increasing' is TRUE
-   if (!increasing) index <- rev(index)
+   if (decreasing) ix <- rev(ix)
    temp <- attributes(x) # Save attributes.
-   temp$row.names <- temp$row.names[index] # Sort row names.
-   x <- x[index, , drop = FALSE] # Sort data frame.
+   temp$row.names <- temp$row.names[ix] # Sort row names.
+   x <- x[ix, , drop = FALSE] # Sort data frame.
    attributes(x) <- temp # Restore attributes.
 
    return(x)

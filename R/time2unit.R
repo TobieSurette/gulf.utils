@@ -7,6 +7,7 @@
 #' @param x Time variable.
 #' @param reference Reference date, time or day of the week.
 #' @param units Time units: \code{secs}, \code{mins}, \code{hours} or \code{days}.
+#' @param ... Not used.
 #'
 #' @examples
 #' # Create sample dates:

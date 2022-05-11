@@ -1,7 +1,8 @@
-#' @title Remove French Characters:
+#' @title Remove Accented Characters
 #'
 #' @description Replace french characters with unaccented versions.
 #'
+#' @param x Character string(s) where accented characters will be replaced by their unaccented versions.
 
 #' @export
 unaccent <- function(x){

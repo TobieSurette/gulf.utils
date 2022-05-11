@@ -1,4 +1,4 @@
-#' Match Data Frame Rows
+#' @title Match Data Frame Rows
 #'
 #' @description Returns the row indices of a target data frame which match those of a source data frame.
 #'
@@ -6,6 +6,7 @@
 #' @param y Target data frame.
 #' @param by Column name(s) which will be used for matching elements.
 #'           The default is the common column names for \code{x} and \code{y}.
+#' @param key Character vector defining index key.
 #' @param ... Further arguments passed onto \code{\link[base]{match}}.
 #'
 #' @examples
@@ -21,8 +22,6 @@
 #' # Get the list of indices matching the rows of 'x' to 'y':
 #' index <- match(x, y)
 #'
-#' # Get the list of indices matching the rows "u" of 'x' to 'y':
-#' index <- match(x, y, by = "u")
 
 #' @export match
 match <- function(x, ...) UseMethod("match")

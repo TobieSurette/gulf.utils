@@ -16,7 +16,6 @@ Logical value(s).
 This function checks whether an R package(s) is installed.
 }
 \examples{
-
 # Check whether there is a 'base' and 'splines' package:
 is.installed(c("base", "splines"))
 

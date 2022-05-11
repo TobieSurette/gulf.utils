@@ -12,3 +12,7 @@ na.rm(x)
 \description{
 Remove NA values from an object.
 }
+\examples{
+na.rm(c(NA, 1, 2, 3, NA, 4))
+
+}

@@ -1,6 +1,4 @@
-#' Date Extraction and Conversion
-#'
-#' @name date
+#' @title Date Extraction and Conversion
 #'
 #' @description These are wrapper functions to extract a date field from an object, such as a character
 #' string or a data frame.
@@ -9,6 +7,7 @@
 #' @param year Date year.
 #' @param month Date month.
 #' @param day Date day.
+#' @param ... Further arguments.
 #'
 #' @return Generally a \code{POSIXct} or \code{POSIXt} object.
 #'
@@ -121,10 +120,11 @@ date.data.frame <- function(x, ...){
    return(v)
 }
 
+# @describeIn date Generic method for extracting day from a date.
 #' @export
 day <- function(x, ...) UseMethod("day")
 
-#' @describeIn date Default method for extracting month from a date.
+#' @describeIn date Default method for extracting day from a date.
 #' @export
 day.default <- function(x, ...){
    ix <- grep("day", tolower(names(x)))
@@ -143,6 +143,7 @@ day.default <- function(x, ...){
    return(NULL)
 }
 
+# @describeIn date Generic method for extracting month from a date.
 #' @export
 month <- function(x, ...) UseMethod("month")
 
@@ -165,6 +166,7 @@ month.default <- function(x, ...){
    return(NULL)
 }
 
+# @describeIn date Generic method for extracting year field from a date.
 #' @export
 year <- function(x, ...) UseMethod("year")
 

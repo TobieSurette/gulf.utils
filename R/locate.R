@@ -2,14 +2,19 @@
 #'
 #' @description Searches for the path(s) and name of package data file(s).
 #'
+#' @param x Not used.
 #' @param file Character string(s) specifying the files, including regular expressions, to search for in the file name.
 #' @param path Character string specifying the file path to search.
 #' @param package Character string specifying the package name.
+#' @param keywords Character string specifying keywords that the path and file names must contain.
 #' @param full.names Logical value specifying whether to return the path names along with the file names.
+#' @param ... Not used.
 #'
 #' @examples
+#' \dontrun{
 #' locate(package = "gulf.data", file = "species.csv")
 #' locate(package = "gulf.data", file = "*.csv")
+#' }
 #'
 #' @return Character vector.
 #'

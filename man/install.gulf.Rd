@@ -10,5 +10,7 @@ install.gulf()
 Install the suite of gulf packages.
 }
 \examples{
+\dontrun{
 install.gulf()
+}
 }
