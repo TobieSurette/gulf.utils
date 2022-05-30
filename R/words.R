@@ -13,7 +13,7 @@
 #' nword("The punctuation, in this phrase; is ... really: 'terrible'.")
 
 #' @export words
-words <- function(x, ...) UseMethod("lexicon")
+words <- function(x, ...) UseMethod("words")
 
 #' @rdname words
 #' @export
