@@ -17,7 +17,7 @@ Packages from the `gulf` series of packages can be installed directly from GitHu
 ```
 library(devtools)
 install_github("TobieSurette/gulf.utils")
-install.gulf()
+gulf.utils::install.gulf()
 ```
 
 # `gulf.utils` package
