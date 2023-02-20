@@ -17,12 +17,13 @@
 
 #' @export
 language <- function(x){
-   options <- c("french", "francais", "français", "english", "anglais", "latin")
+   options <- c("french", "francais", "français", "english", "anglais", "latin", "bilingual", "bilingue")
    if (missing(x)) return(options)
    ux <- unique(x)
    index <- match(x, ux)
    for (i in 1:length(ux)) ux[i] <- options[grep(paste0("^", tolower(ux[i])), options)[1]]
    ux[ux %in% c("francais", "français")] <- "french"
+   ux[ux %in% c("bilingue")] <- "bilingual"
    ux[ux %in% c("anglais")] <- "english"
    x <- ux[index]
    return(x)
