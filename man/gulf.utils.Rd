@@ -2,6 +2,7 @@
 % Please edit documentation in R/gulf.utils.R
 \docType{package}
 \name{gulf.utils}
+\alias{gulf.utils-package}
 \alias{gulf.utils}
 \title{\strong{gulf.utils} Utility Functions}
 \description{
@@ -37,3 +38,7 @@ Package of basic utility functions for use in the southern Gulf of Saint Lawrenc
 }
 }
 
+\author{
+\strong{Maintainer}: Tobie Surette \email{Tobie.Surette@dfo-mpo.gc.ca}
+
+}

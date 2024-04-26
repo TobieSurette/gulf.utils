@@ -33,9 +33,9 @@ Function to remove or restore redundant or empty elements from a data object.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{data.frame}: Remove empty data columns.
-}}
+\item \code{compress(data.frame)}: Remove empty data columns.
 
+}}
 \examples{
 x <- data.frame(year = 2018, count = rpois(10, 5), survey = "scs", group = rep(1:2, each = 5))
 x <- compress(x)

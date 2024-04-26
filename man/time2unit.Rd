@@ -38,19 +38,19 @@ Calculate time difference relative to a specified reference time.
 }
 \section{Functions}{
 \itemize{
-\item \code{time2sec}: Calculate time difference in \bold{seconds}.
+\item \code{time2sec()}: Calculate time difference in \bold{seconds}.
 
-\item \code{time2min}: Calculate time difference in \bold{minutes}.
+\item \code{time2min()}: Calculate time difference in \bold{minutes}.
 
-\item \code{time2hour}: Calculate time difference in \bold{hours}.
+\item \code{time2hour()}: Calculate time difference in \bold{hours}.
 
-\item \code{time2day}: Calculate time difference in \bold{days}.
+\item \code{time2day()}: Calculate time difference in \bold{days}.
 
-\item \code{julian}: Calculate Julian day, i.e. the day of the year relative to January 1st.
+\item \code{julian()}: Calculate Julian day, i.e. the day of the year relative to January 1st.
 
-\item \code{week}: Calculate to in which \bold{week} of the year a date fall into.
+\item \code{week()}: Calculate to in which \bold{week} of the year a date fall into.
+
 }}
-
 \examples{
 # Create sample dates:
 v <- date(c("2016-07-10", "2016-07-13", "2016-07-16", "2016-08-25", "2016-10-01"))

@@ -37,11 +37,11 @@ corresponding to each matrix element \code{z}.
 }
 \section{Functions}{
 \itemize{
-\item \code{matrix2xyz}: Convert from matrix to xyz format.
+\item \code{matrix2xyz()}: Convert from matrix to xyz format.
 
-\item \code{xyz2matrix}: Convert from xyz to matrix format.
+\item \code{xyz2matrix()}: Convert from xyz to matrix format.
+
 }}
-
 \examples{
 # Define  random matrix:
 m <- round(matrix(runif(40), nrow = 8), 2)

@@ -51,17 +51,17 @@ string or a data frame.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{default}: Default time method.
+\item \code{time(default)}: Default time method.
 
-\item \code{logical}: Convert time from logical value.
+\item \code{time(logical)}: Convert time from logical value.
 
-\item \code{numeric}: Convert time from numeric value.
+\item \code{time(numeric)}: Convert time from numeric value.
 
-\item \code{character}: Convert time from character string.
+\item \code{time(character)}: Convert time from character string.
 
-\item \code{data.frame}: Extract time from data frame.
+\item \code{time(data.frame)}: Extract time from data frame.
+
 }}
-
 \examples{
 time() # Current time (base method).
 

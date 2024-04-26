@@ -29,11 +29,11 @@ Returns the row indices of a target data frame which match those of a source dat
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{default}: Default match method, see \code{\link[base]{match}}.
+\item \code{match(default)}: Default match method, see \code{\link[base]{match}}.
 
-\item \code{data.frame}: Match rows between two data frames.
+\item \code{match(data.frame)}: Match rows between two data frames.
+
 }}
-
 \examples{
 # Create a simple data frame:
 x <- data.frame(

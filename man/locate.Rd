@@ -32,9 +32,9 @@ Searches for the path(s) and name of package data file(s).
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{default}: Default function to locate data files.
-}}
+\item \code{locate(default)}: Default function to locate data files.
 
+}}
 \examples{
 \dontrun{
 locate(package = "gulf.data", file = "species.csv")

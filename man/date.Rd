@@ -44,19 +44,22 @@ string or a data frame.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{default}: Default date method.
+\item \code{date(default)}: Default date method.
 
-\item \code{character}: Convert character string to date.
+\item \code{date(character)}: Convert character string to date.
 
-\item \code{data.frame}: Extract date from a data frame.
+\item \code{date(data.frame)}: Extract date from a data frame.
 
-\item \code{default}: Default method for extracting day from a date.
-
-\item \code{default}: Default method for extracting month from a date.
-
-\item \code{default}: Default method for extracting year field from a date.
 }}
+\section{Functions}{
+\itemize{
+\item \code{day(default)}: Default method for extracting day from a date.
 
+\item \code{month(default)}: Default method for extracting month from a date.
+
+\item \code{year(default)}: Default method for extracting year field from a date.
+
+}}
 \examples{
 date() # Base method.
 

@@ -47,19 +47,19 @@ values are also shown, along with the contents of each variable field.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{NULL}: NULL method.
+\item \code{describe(`NULL`)}: NULL method.
 
-\item \code{logical}: Summary contents of a logical vector.
+\item \code{describe(logical)}: Summary contents of a logical vector.
 
-\item \code{numeric}: Summary contents of a numeric vector.
+\item \code{describe(numeric)}: Summary contents of a numeric vector.
 
-\item \code{character}: Summary contents of a character vector.
+\item \code{describe(character)}: Summary contents of a character vector.
 
-\item \code{factor}: Summary contents of a factor.
+\item \code{describe(factor)}: Summary contents of a factor.
 
-\item \code{data.frame}: Summary contents of a data frame.
+\item \code{describe(data.frame)}: Summary contents of a data frame.
+
 }}
-
 \examples{
 # Integer examples:
 describe(1:10)

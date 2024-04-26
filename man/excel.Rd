@@ -26,11 +26,11 @@ This function dumps a data frame into a temporary tab-delimited table and opens 
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{default}: Default 'excel' method.
+\item \code{excel(default)}: Default 'excel' method.
 
-\item \code{data.frame}: Export data frame to MS Excel.
+\item \code{excel(data.frame)}: Export data frame to MS Excel.
+
 }}
-
 \examples{
 \dontrun{
 # Send a vector to Excel:
