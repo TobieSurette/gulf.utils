@@ -133,11 +133,23 @@ day.default <- function(x, ...){
    ix <- grep("date", tolower(names(x)))
    if (length(ix) > 0) x <- x[[ix]]
 
-   if (length(grep("POSIX", class(x))) == 0) x <- gulf.utils::date(x)
+   # Convert dates to POSIX object:
+   if (length(grep("POSIX", class(x))) == 0){
+      ix <- which(x != "")
+      xx <- gulf.utils::date(x[ix])
+      x[(x == "") | is.na(x)] <- NA
+      x <- rep(as.POSIXct(NA), length(x))
+      x[ix] <- xx
+   }
+
+   # Extract day from date:
    if (length(grep("POSIX", class(x))) > 0){
-      ux <- unique(x)
-      v <- as.numeric(substr(as.character(ux), 9, 10))
-      return(v[match(x, ux)])
+      ux <- unique(x[!is.na(x)])
+      uv <- as.numeric(substr(as.character(ux), 9, 10))
+      ix <- which(!is.na(x))
+      v <- rep(NA, length(x))
+      v[ix] <- uv[match(x[ix], ux)]
+      return(v)
    }
 
    return(NULL)
@@ -156,11 +168,23 @@ month.default <- function(x, ...){
    ix <- grep("date", tolower(names(x)))
    if (length(ix) > 0) x <- x[[ix]]
 
-   if (length(grep("POSIX", class(x))) == 0) x <- gulf.utils::date(x)
+   # Convert dates to POSIX object:
+   if (length(grep("POSIX", class(x))) == 0){
+      ix <- which(x != "")
+      xx <- gulf.utils::date(x[ix])
+      x[(x == "") | is.na(x)] <- NA
+      x <- rep(as.POSIXct(NA), length(x))
+      x[ix] <- xx
+   }
+
+   # Extract month from date:
    if (length(grep("POSIX", class(x))) > 0){
-      ux <- unique(x)
-      v <- as.numeric(substr(as.character(ux), 6, 7))
-      return(v[match(x, ux)])
+      ux <- unique(x[!is.na(x)])
+      uv <- as.numeric(substr(as.character(ux), 6, 7))
+      ix <- which(!is.na(x))
+      v <- rep(NA, length(x))
+      v[ix] <- uv[match(x[ix], ux)]
+      return(v)
    }
 
    return(NULL)
@@ -179,11 +203,23 @@ year.default <- function(x, ...){
    ix <- grep("date", tolower(names(x)))
    if (length(ix) > 0) x <- x[[ix]]
 
-   if (length(grep("POSIX", class(x))) == 0) x <- gulf.utils::date(x)
+   # Convert dates to POSIX object:
+   if (length(grep("POSIX", class(x))) == 0){
+      ix <- which(x != "")
+      xx <- gulf.utils::date(x[ix])
+      x[(x == "") | is.na(x)] <- NA
+      x <- rep(as.POSIXct(NA), length(x))
+      x[ix] <- xx
+   }
+
+   # Extract year from date:
    if (length(grep("POSIX", class(x))) > 0){
-      ux <- unique(x)
-      v <- as.numeric(substr(as.character(ux), 1, 4))
-      return(v[match(x, ux)])
+      ux <- unique(x[!is.na(x)])
+      uv <- as.numeric(substr(as.character(ux), 1, 4))
+      ix <- which(!is.na(x))
+      v <- rep(NA, length(x))
+      v[ix] <- uv[match(x[ix], ux)]
+      return(v)
    }
 
    return(NULL)

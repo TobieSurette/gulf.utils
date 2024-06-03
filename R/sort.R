@@ -26,7 +26,7 @@
 #' @export
 sort.data.frame <- function(x, decreasing = FALSE, by, ...){
    # Define 'by':
-   if (missing(by)) if (attr(x, "key")) by <- attr(x, "key") else by <- names(x)
+   if (missing(by)) if (length(attr(x, "key")) > 0) by <- attr(x, "key") else by <- names(x)
 
    # Check if all variables are in the target object.
    if (!all(by %in% names(x))) stop("Some column names are not in target object.")
