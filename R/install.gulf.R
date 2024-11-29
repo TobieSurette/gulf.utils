@@ -10,7 +10,7 @@
 #' @export install.gulf
 install.gulf <- function(){
    # Define packages:
-   required <- c("devtools", "sp", "rgdal", "akima")
+   required <- c("devtools", "sp", "akima")
    gulf <- c("gulf.metadata", "gulf.data", "gulf.graphics", "gulf.spatial", "gulf.stats")
    installed <- rownames(utils::installed.packages())
 
